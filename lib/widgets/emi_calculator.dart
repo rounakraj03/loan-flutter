@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 
 class EmiCalculatorWidget extends StatefulWidget {
@@ -9,9 +10,29 @@ class EmiCalculatorWidget extends StatefulWidget {
 }
 
 class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
-  double _sliderValueAmount = 0.5;
-  double _sliderValueMonths = 0.2;
-  double _sliderValueInterest = 0.2;
+  double _sliderValueAmount = 200000;
+  double _sliderValueMonths = 5;
+  double _sliderValueInterest = 2;
+  double emiValue = 0.0;
+
+
+  void calculateMyEmi(double principle, double interestPerYear, double years) {
+    double interestPerMonth = interestPerYear / 12 / 100; // Convert annual interest rate to monthly and percentage to decimal
+    double timeInMonths = years * 12;
+    setState(() {
+      double numerator = principle * interestPerMonth * pow((1 + interestPerMonth), timeInMonths);
+      double denominator = pow((1 + interestPerMonth), timeInMonths) - 1;
+      emiValue = numerator / denominator;
+    });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,26 +66,28 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
           SizedBox(height: 30,),
           //slider with text showing 1 lakh, 5 lakh, 10 lakh
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("1 lakh"),
-                  Container(width: 100, alignment: Alignment.center, child: Text(((_sliderValueAmount * 9900000) + 100000).toInt().toString())), // Dynamic value
+                  Container(width: 100, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
                   Text("1 crore"),
                 ],
               ),
               Slider(
                 activeColor: Colors.black,
                 inactiveColor: Colors.black45,
+                min: 100000,
+                max: 10000000,
                 value: _sliderValueAmount,
-                onChanged: (value) {
-                  setState(() {
-                    double newValue = (value * 9900000) + 100000;
-                    double roundedValue = (newValue / 50000).round().toDouble() * 50000;
-                    _sliderValueAmount = (roundedValue - 100000) / 9900000;
-                  });
-                },
+                  onChanged: (value) {
+                    setState(() {
+                      _sliderValueAmount = (value / 50000).round() * 50000;
+                      calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
+                    });
+                  }
               ),
 
               SizedBox(height: 50,),
@@ -72,7 +95,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("2 percent"),
-                  Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueInterest/4).toString() + " percent")), // Dynamic value
+                  Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueInterest).toStringAsFixed(2) + " percent")), // Dynamic value
                   Text("25 percent"),
                 ],
               ),
@@ -80,11 +103,13 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                 activeColor: Colors.black,
                 inactiveColor: Colors.black45,
                 value: _sliderValueInterest,
-                min: 8,
-                max: 100,
+                min: 2.0,         // Start from 2%
+                max: 25.0,        // End at 25%
+                divisions: 92,    // (25-2)/0.25 = 92 divisions
                 onChanged: (value) {
                   setState(() {
-                    _sliderValueInterest= (value.roundToDouble());
+                    _sliderValueInterest = value;
+                    calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
                   });
                 },
               ),
@@ -92,8 +117,8 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("1 year"),
-                  Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueMonths/2).toString() + " year")), // Dynamic value
+                  Text("1 month"),
+                  Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueMonths).toStringAsFixed(1) + " year")), // Dynamic value
                   Text("30 years"),
                 ],
               ),
@@ -102,13 +127,18 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                 inactiveColor: Colors.black45,
                 value: _sliderValueMonths,
                 min: 0,
-                max: 60,
+                max: 30,
+                divisions: 60,
                 onChanged: (value) {
                   setState(() {
-                    _sliderValueMonths = (value.roundToDouble());
+                    _sliderValueMonths = value;
+                    calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
                   });
-                },
-              ),
+                },),
+
+              SizedBox(height: 50,),
+              Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
+              Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),)
             ],
           )
 
