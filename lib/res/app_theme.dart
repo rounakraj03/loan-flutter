@@ -14,7 +14,9 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.black87,
       iconTheme: const IconThemeData(color: Colors.white),
       // textTheme: GoogleFonts.robotoCondensedTextTheme()
-      textTheme: GoogleFonts.poppinsTextTheme()
+      textTheme: GoogleFonts.poppinsTextTheme().apply(
+        displayColor: Colors.white, bodyColor: Colors.white
+      )
     );
   }
 }
