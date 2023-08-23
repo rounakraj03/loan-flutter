@@ -14,7 +14,14 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
   double _sliderValueMonths = 5;
   double _sliderValueInterest = 2;
   double emiValue = 0.0;
+  double totalInterest = 0.0;
 
+  void calculateTotalInterest(double principle, double emiValue, double years) {
+    double totalPayments = years * 12;
+    setState(() {
+      totalInterest = (emiValue * totalPayments) - principle;
+    });
+  }
 
   void calculateMyEmi(double principle, double interestPerYear, double years) {
     double interestPerMonth = interestPerYear / 12 / 100; // Convert annual interest rate to monthly and percentage to decimal
@@ -24,6 +31,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
       double denominator = pow((1 + interestPerMonth), timeInMonths) - 1;
       emiValue = numerator / denominator;
     });
+    calculateTotalInterest(principle, emiValue, years);
   }
 
 
@@ -138,7 +146,13 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
 
               SizedBox(height: 50,),
               Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
-              Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),)
+              Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),),
+              SizedBox(height: 50,),
+              Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
+              Text(totalInterest.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),),
+              SizedBox(height: 50,),
+              Text("Total Payment(Principal + Interest)", style: TextStyle(letterSpacing: 1),),
+              Text((_sliderValueAmount+totalInterest).toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold),)
             ],
           )
 
