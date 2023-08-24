@@ -1,6 +1,7 @@
 class Assets {
   // Images
   static const String logo = "assets/images/logo.png";
+  static const String smilingMan = "assets/images/smilingMan.png";
 
 //Icons
   static const String facebookLogo = "assets/icons/fbIcon.png";

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/widgets/emi_calculator.dart';
 import 'package:flutter_loan/widgets/footer.dart';
+import 'package:flutter_loan/widgets/homeWidgets.dart';
 import 'package:flutter_loan/widgets/navbar.dart';
 import 'package:provider/provider.dart';
 
@@ -22,10 +23,12 @@ class _HomePageState extends State<HomePage> {
       body: Consumer<NavBarProvider>(
         builder: (_, provider, child) {
           return Scaffold(
+            backgroundColor: Colors.white,
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   NavBarWidget(),
+                  HomeOneWidget(),
                   EmiCalculatorWidget(),
                   Footer()
 

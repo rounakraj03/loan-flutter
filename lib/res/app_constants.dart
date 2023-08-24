@@ -1,3 +1,3 @@
 class Constants {
-  static double desktop_view = 800;
+  static double desktop_view = 900;
 }
