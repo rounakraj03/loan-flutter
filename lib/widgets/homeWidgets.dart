@@ -311,9 +311,19 @@ class HomeThreeWidget extends StatelessWidget {
               UnderLineWidget(height: 3, width: 100,),
               SizedBox(height: 30,),
 
-              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Colors.grey.shade900, wordSpacing: 1, fontWeight: FontWeight.w700),),
+              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Colors.black45, wordSpacing: 1, fontWeight: FontWeight.w700),),
               SizedBox(height: 30,),
-              Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.grey.shade800, wordSpacing: 1),)
+              Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.black38, wordSpacing: 1),),
+              SizedBox(height: 30,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomCircularElevatedButton(child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,), onPressed: (){}),
+                  SizedBox(width: 20,),
+                  Text("How We Work", style: TextStyle(wordSpacing: 1, color: Colors.black),)
+                ],
+              )
+
             ],
 
           ),
