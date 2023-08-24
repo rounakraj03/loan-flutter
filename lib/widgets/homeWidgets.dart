@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
@@ -334,3 +335,67 @@ class HomeThreeWidget extends StatelessWidget {
 }
 
 
+class HomeFourWidget extends StatefulWidget {
+  const HomeFourWidget({super.key});
+
+  @override
+  State<HomeFourWidget> createState() => _HomeFourWidgetState();
+}
+
+class _HomeFourWidgetState extends State<HomeFourWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if(constraints.maxWidth > Constants.desktop_view) {return SizedBox();}
+        else {
+          return Container(
+            padding: const EdgeInsets.all(20.0),
+            color: Color(0xFFF8f8f8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("OUR SERVICES", style: TextStyle(color: Colors.grey),),
+                  ],
+                ),
+                SizedBox(height: 20,),
+                RichText(
+                  text: TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: 26),
+                      children: [
+                        TextSpan(text: "What We ",style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: "Offer for You"),
+                      ]
+                  ),
+                ),
+                SizedBox(height: 5,),
+                UnderLineWidget(height: 3, width: 100,),
+                SizedBox(height: 30,),
+                CustomElevatedButton(child: "VIEW ALL", onPressed: (){}),
+                SizedBox(height: 15,),
+
+                // add carousel slider
+                CarouselSlider(
+                    items: [
+                      Container(
+                        color: Colors.white,
+                        height: 200,
+                        child: Column(
+                          children: [],
+                        ),
+                      )
+                    ],
+                    options: CarouselOptions()
+                ),
+
+              ],
+            ),
+          );
+        }
+    },);
+  }
+}
