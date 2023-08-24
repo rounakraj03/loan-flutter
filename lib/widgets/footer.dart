@@ -6,14 +6,15 @@ import 'package:flutter_loan/res/assets.dart';
 class UnderLineWidget extends StatelessWidget {
   Color? underlineColor;
   double? height;
-  UnderLineWidget({super.key, this.underlineColor, this.height});
+  double? width;
+  UnderLineWidget({super.key, this.underlineColor, this.height, this.width});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: height ?? 1,
-      width: 50,
+      width: width ?? 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: underlineColor ?? Colors.redAccent),);

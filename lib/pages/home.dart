@@ -29,6 +29,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   NavBarWidget(),
                   HomeOneWidget(),
+                  HomeTwoWidget(),
+                  HomeThreeWidget(),
                   EmiCalculatorWidget(),
                   Footer()
 

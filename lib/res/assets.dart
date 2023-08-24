@@ -8,6 +8,9 @@ class Assets {
   static const String imageTwo = "assets/images/imageTwo.png";
   static const String imageThree = "assets/images/imageThree.png";
   static const String imageFour = "assets/images/imageFour.png";
+  static const String imageFrame = "assets/images/frame.jpg";
+  static const String imageFrame2 = "assets/images/frame2.png";
+  static const String secondWidgetImage = "assets/images/secondWidgetImage.jpg";
 
 //Icons
   static const String facebookLogo = "assets/icons/fbIcon.png";
