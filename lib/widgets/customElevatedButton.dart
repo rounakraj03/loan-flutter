@@ -12,7 +12,7 @@ class CustomElevatedButton extends StatefulWidget {
 class _CustomElevatedButtonState extends State<CustomElevatedButton> {
 
   List<Color> onHoverGradient = [Colors.redAccent.shade200,Colors.redAccent.shade200,Colors.redAccent.shade200,Colors.redAccent.shade200];
-  List<Color> onNonHoverGradient = [Colors.redAccent.shade200,Colors.redAccent.shade100,Colors.redAccent.shade100,Colors.redAccent.shade200];
+  List<Color> onNonHoverGradient = [Colors.deepOrangeAccent,Colors.deepOrange.shade300,Colors.deepOrange.shade300,Colors.redAccent.shade200];
   bool isHovering = false;
   @override
   Widget build(BuildContext context) {

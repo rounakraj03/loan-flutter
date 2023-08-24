@@ -48,7 +48,7 @@ class _FooterState extends State<Footer> {
                         child: SizedBox(
                           height: 100,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Flexible(flex:1,child: Image.asset(Assets.logo)),
                               Flexible(flex:1,child: Text("MyPaisaBazaar", style: TextStyle(fontWeight: FontWeight.bold),))
