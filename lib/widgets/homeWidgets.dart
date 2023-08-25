@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
@@ -343,6 +344,10 @@ class HomeFourWidget extends StatefulWidget {
 }
 
 class _HomeFourWidgetState extends State<HomeFourWidget> {
+
+  CarouselController buttonCarouselController = CarouselController();
+  int currentCarouselIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -381,15 +386,57 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                 // add carousel slider
                 CarouselSlider(
                     items: [
-                      Container(
-                        color: Colors.white,
-                        height: 200,
-                        child: Column(
-                          children: [],
-                        ),
-                      )
+                      CardContainer(assetName: Assets.offer1, heading: "Business Loan", subHeading: "Strategy experience and analytical expertise combine",),
+                      CardContainer(assetName: Assets.offer2, heading: "Commercial Loan", subHeading: "Enable decision making and create Business plan",),
+                      CardContainer(assetName: Assets.offer3, heading: "Personal Loan", subHeading: "Capital market perspective to growth business",),
+                      CardContainer(assetName: Assets.offer4, heading: "Home Loan", subHeading: "Linking corporate business strategy capital markets",),
+                      CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
+                      CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
+                      CardContainer(assetName: Assets.offer7, heading: "Car Loan", subHeading: "Technology is an integral differentiating competition",),
+                      CardContainer(assetName: Assets.offer8, heading: "Investment Loan", subHeading: "Potentially of your business that both influences",),
+                      CardContainer(assetName: Assets.offer9, heading: "Goal Loan", subHeading: "Expert analysis provocative points of marketing",),
                     ],
-                    options: CarouselOptions()
+                    carouselController: buttonCarouselController,
+                    options: CarouselOptions(
+                      height: 250,
+                      viewportFraction: 0.9,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentCarouselIndex = index;
+                        });
+                      },
+                      scrollDirection: Axis.horizontal,
+                    )
+                ),
+                SizedBox(height: 5,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DotsIndicator(
+                      dotsCount: 9,
+                      position: currentCarouselIndex,
+                      decorator: DotsDecorator(
+                        color: Colors.black, // Inactive color
+                        activeColor: Colors.redAccent,
+                      ),
+                      onTap: (pos) {
+                        setState((){
+                          currentCarouselIndex = pos;
+                          buttonCarouselController.animateToPage(currentCarouselIndex,
+                              duration: Duration(milliseconds: 300), curve: Curves.linear);
+                        });
+                      },
+                    ),
+                  ],
                 ),
 
               ],
@@ -397,5 +444,75 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
           );
         }
     },);
+  }
+}
+
+
+class CardContainer extends StatefulWidget {
+  String assetName;
+  String heading;
+  String subHeading;
+
+  CardContainer({required this.assetName, required this.heading, required this.subHeading, super.key});
+
+  @override
+  State<CardContainer> createState() => _CardContainerState();
+}
+
+class _CardContainerState extends State<CardContainer> {
+
+  bool isHovering = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTapDown: (details) => setState(() {
+        isHovering = true;
+      }),
+      onTapUp: (details) => setState(() {
+        isHovering = false;
+      }),
+      onTapCancel: () => setState(() {
+        isHovering = false;
+      }),
+      child: MouseRegion(
+        onEnter: (details){
+          setState(() {
+            isHovering = true;
+          });
+          },
+        onExit: (details){
+          setState(() {
+            isHovering = false;
+          });
+        },
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border(bottom: BorderSide(color: isHovering ? Colors.redAccent : Colors.white, width: 2, style: BorderStyle.solid))
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          margin: EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox( height: 80, width: 80, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+              SizedBox(height: 20,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.heading, style: TextStyle(wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                  SizedBox(height: 10,),
+                  Text(widget.subHeading, style: TextStyle(wordSpacing: 1, color: Colors.black45, fontSize: 14),),
+                ],
+              ),
+              SizedBox(height: 20,),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
