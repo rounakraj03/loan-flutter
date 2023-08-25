@@ -399,7 +399,7 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(
                       height: 250,
-                      viewportFraction: 0.9,
+                      viewportFraction: 1,
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,
