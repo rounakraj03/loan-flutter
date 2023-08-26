@@ -59,9 +59,10 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
   }
 }
 class CustomWhiteElevatedButton extends StatefulWidget {
+  double? width;
   String child;
   VoidCallback onPressed;
-  CustomWhiteElevatedButton({super.key, required this.child, required this.onPressed});
+  CustomWhiteElevatedButton({super.key, required this.child, required this.onPressed, this.width});
 
   @override
   State<CustomWhiteElevatedButton> createState() => _CustomWhiteElevatedButtonState();
@@ -102,7 +103,7 @@ class _CustomWhiteElevatedButtonState extends State<CustomWhiteElevatedButton> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-        width: width * 0.6,
+        width: widget.width ?? width * 0.6,
         height: 50,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
