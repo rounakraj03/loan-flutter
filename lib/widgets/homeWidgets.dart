@@ -288,7 +288,6 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                   key: Key('second-widget-home-two'),
                   onVisibilityChanged: (info) {
                     if(info.visibleFraction > 0.8){
-                      print("forwarding");
                       _controller.forward();
                     }
                   },
