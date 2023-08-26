@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatefulWidget {
   String child;
+  double? width;
+  double? height;
   VoidCallback onPressed;
-  CustomElevatedButton({super.key, required this.child, required this.onPressed});
+  CustomElevatedButton({super.key, required this.child, required this.onPressed, this.width, this.height});
 
   @override
   State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
@@ -43,8 +45,8 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-        width: 100,
-        height: 50,
+        width: widget.width ?? 100,
+        height: widget.height ?? 50,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             gradient: LinearGradient(

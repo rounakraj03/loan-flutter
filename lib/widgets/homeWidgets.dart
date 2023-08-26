@@ -54,83 +54,120 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                             ]
                         ),
                       ),
-                      UnderLineWidget(underlineColor: Colors.white,height: 2,),
+                      UnderLineWidget(underlineColor: Colors.white,height: 2, width: 100,),
                       SizedBox(height: 10,),
-                      CustomElevatedButton(onPressed: (){}, child: "GET LOAN")
+                      CustomElevatedButton(onPressed: (){}, child: "GET LOAN", width: 200, height: 70)
                     ],
                   ),
                 )
             ),
             Positioned(
               bottom: 0,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Text(""),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Text("Hello world"),
-                      ],
+              child: Container(
+                width: width,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Text(""),
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Text("Hello world"),
-                      ],
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 60, width: 60, child: Image.asset(Assets.imageFour, color: Colors.white, fit: BoxFit.cover,),),
+                            SizedBox(width: 10,),
+                            Text("Fast Approvals", style: TextStyle(wordSpacing: 1, fontSize: 18)),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Text("Hello world"),
-                      ],
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 50, width: 50, child: Image.asset(Assets.imageOne, color: Colors.white, fit: BoxFit.cover,),),
+                            SizedBox(width: 10,),
+                            Text("500,000 Customers", style: TextStyle(wordSpacing: 1,fontSize: 18)),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Text("Hello world"),
-                      ],
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 40, width: 40, child: Image.asset(Assets.imageThree, color: Colors.white, fit: BoxFit.cover,),),
+                            SizedBox(width: 10,),
+                            Text("No Prepayment Fees", style: TextStyle(wordSpacing: 1,fontSize: 18),),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 2),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    alignment: Alignment.center,
-                    color: Colors.transparent.withOpacity(0.3),
-                    height: 50,
-                    child: Text(""),
-                  ),
-                ],
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 40, width: 40, child: Image.asset(Assets.imageTwo, color: Colors.white, fit: BoxFit.cover,),),
+                            SizedBox(width: 20,),
+                            Text("Flexible payments", style: TextStyle(wordSpacing: 1,fontSize: 18)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 2),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Colors.transparent.withOpacity(0.3),
+                        height: 80,
+                        child: Text(""),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
