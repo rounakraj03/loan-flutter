@@ -476,7 +476,101 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if(constraints.maxWidth > Constants.desktop_view) {return SizedBox();}
+        if(constraints.maxWidth > Constants.desktop_view) {
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 250.0, vertical: 50),
+            color: Color(0xFFF8f8f8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("OUR SERVICES", style: TextStyle(color: Colors.grey, fontSize: 18,wordSpacing: 1, letterSpacing: 2 ),),
+                        SizedBox(height: 20,),
+                        RichText(
+                          text: TextSpan(
+                          style: TextStyle(color: Colors.black, fontSize: 40,wordSpacing: 2, letterSpacing: 3 ),
+                          children: [
+                            TextSpan(text: "What We ",style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "Offer for You"),
+                          ]
+                      ),
+                    ),
+                    SizedBox(height: 5,),
+                    UnderLineWidget(height: 3, width: 100,),
+                      ],
+                    ),
+                    CustomElevatedButton(child: "VIEW ALL", width: 200,onPressed: (){}),
+                  ],
+                ),
+                SizedBox(height: 30,),
+                SizedBox(height: 15,),
+
+                // add carousel slider
+                CarouselSlider(
+                    items: [
+                      CardContainer(assetName: Assets.offer1, heading: "Business Loan", subHeading: "Strategy experience and analytical expertise combine",),
+                      CardContainer(assetName: Assets.offer2, heading: "Commercial Loan", subHeading: "Enable decision making and create Business plan",),
+                      CardContainer(assetName: Assets.offer3, heading: "Personal Loan", subHeading: "Capital market perspective to growth business",),
+                      CardContainer(assetName: Assets.offer4, heading: "Home Loan", subHeading: "Linking corporate business strategy capital markets",),
+                      CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
+                      CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
+                      CardContainer(assetName: Assets.offer7, heading: "Car Loan", subHeading: "Technology is an integral differentiating competition",),
+                      CardContainer(assetName: Assets.offer8, heading: "Investment Loan", subHeading: "Potentially of your business that both influences",),
+                      CardContainer(assetName: Assets.offer9, heading: "Goal Loan", subHeading: "Expert analysis provocative points of marketing",),
+                    ],
+                    carouselController: buttonCarouselController,
+                    options: CarouselOptions(
+                      height: 300,
+                      viewportFraction: 0.25,
+                      initialPage: 5,
+                      enableInfiniteScroll: false,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentCarouselIndex = index ~/ 4;  // integer division
+                        });
+                      },
+                      scrollDirection: Axis.horizontal,
+                    )
+                ),
+                SizedBox(height: 5,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DotsIndicator(
+                      dotsCount: 3,
+                      position: currentCarouselIndex,
+                      decorator: DotsDecorator(
+                        color: Colors.black, // Inactive color
+                        activeColor: Colors.redAccent,
+                      ),
+                      onTap: (pos) {
+                        setState((){
+                          currentCarouselIndex = pos;
+                          buttonCarouselController.animateToPage(currentCarouselIndex *4 ,
+                              duration: Duration(milliseconds: 300), curve: Curves.linear);
+                        });
+                      },
+                    ),
+                  ],
+                ),
+
+              ],
+            ),
+          );
+        }
         else {
           return Container(
             padding: const EdgeInsets.all(20.0),
@@ -589,55 +683,112 @@ class _CardContainerState extends State<CardContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTapDown: (details) => setState(() {
-        isHovering = true;
-      }),
-      onTapUp: (details) => setState(() {
-        isHovering = false;
-      }),
-      onTapCancel: () => setState(() {
-        isHovering = false;
-      }),
-      child: MouseRegion(
-        onEnter: (details){
-          setState(() {
+    double width = MediaQuery.of(context).size.width;
+    return LayoutBuilder(builder: (context, constraints) {
+      if(width > Constants.desktop_view) {
+        return InkWell(
+          onTapDown: (details) => setState(() {
             isHovering = true;
-          });
-          },
-        onExit: (details){
-          setState(() {
+          }),
+          onTapUp: (details) => setState(() {
             isHovering = false;
-          });
-        },
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(bottom: BorderSide(color: isHovering ? Colors.redAccent : Colors.white, width: 2, style: BorderStyle.solid))
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox( height: 80, width: 80, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
-              SizedBox(height: 20,),
-              Column(
+          }),
+          onTapCancel: () => setState(() {
+            isHovering = false;
+          }),
+          child: MouseRegion(
+            onEnter: (details){
+              setState(() {
+                isHovering = true;
+              });
+            },
+            onExit: (details){
+              setState(() {
+                isHovering = false;
+              });
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border(bottom: BorderSide(color: isHovering ? Colors.redAccent : Colors.white, width: 2, style: BorderStyle.solid))
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(widget.heading, style: TextStyle(wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
-                  SizedBox(height: 10,),
-                  Text(widget.subHeading, style: TextStyle(wordSpacing: 1, color: Colors.black45, fontSize: 14),),
+                  SizedBox( height: 70, width: 70, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+                  SizedBox(height: 5,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.heading, style: TextStyle(wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),),
+                      SizedBox(height: 10,),
+                      Text(widget.subHeading, style: TextStyle(wordSpacing: 1, color: Colors.black45, fontSize: 12),),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
                 ],
               ),
-              SizedBox(height: 20,),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        );
+      }
+      else {
+        return InkWell(
+          onTapDown: (details) => setState(() {
+            isHovering = true;
+          }),
+          onTapUp: (details) => setState(() {
+            isHovering = false;
+          }),
+          onTapCancel: () => setState(() {
+            isHovering = false;
+          }),
+          child: MouseRegion(
+            onEnter: (details){
+              setState(() {
+                isHovering = true;
+              });
+            },
+            onExit: (details){
+              setState(() {
+                isHovering = false;
+              });
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border(bottom: BorderSide(color: isHovering ? Colors.redAccent : Colors.white, width: 2, style: BorderStyle.solid))
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox( height: 80, width: 80, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+                  SizedBox(height: 20,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.heading, style: TextStyle(wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),),
+                      SizedBox(height: 10,),
+                      Text(widget.subHeading, style: TextStyle(wordSpacing: 1, color: Colors.black45, fontSize: 14),),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+    },);
+
   }
 }
 
