@@ -799,101 +799,365 @@ class HomeFiveWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      width: double.maxFinite,
-      // height: 500,
-      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-      alignment: Alignment.center,
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("A QUICK & TRANSPARENT PROCESS",style: TextStyle(color: Colors.black54),),
-            ],
-          ),
-          SizedBox(height: 10,),
-          RichText(textAlign: TextAlign.center,
-              text: TextSpan(
-                style: TextStyle(color: Colors.black,fontSize: 28),
-            children: [
-              TextSpan(text: "We have a simple ", style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: "online application"),
-            ]
-          )),
-          UnderLineWidget(width: 100, height: 3, ),
-          SizedBox(height: 50,),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if(constraints.maxWidth > Constants.desktop_view) {
+          return Container(
+            width: double.maxFinite,
+            // height: 500,
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            alignment: Alignment.center,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("A QUICK & TRANSPARENT PROCESS",style: TextStyle(color: Colors.black54, wordSpacing: 1,letterSpacing: 1, fontSize: 16),),
+                  ],
+                ),
+                SizedBox(height: 15,),
+                SizedBox(
+                  width: width/3,
+                  child: RichText(textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(color: Colors.black,fontSize: 40, letterSpacing: 1, wordSpacing: 1),
+                          children: [
+                            TextSpan(text: "We have a simple ", style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "online application"),
+                          ]
+                      )),
+                ),
+                UnderLineWidget(width: 100, height: 3, ),
+                SizedBox(height: 50,),
 
-          _card(
-            image: Assets.offer8,
-            imageNumberText: "01",
-            heading: "Get a Free Quote",
-            subHeading: "We will customize a loan based on the amount of cash your company need term length",
-          ),
-          _card(
-            image: Assets.offer2,
-            imageNumberText: "02",
-            heading: "Get an Instant Decision",
-            subHeading: "We provide online instant cash loans with quick approval that suits your term length",
-          ),
-          _card(
-            image: Assets.offer3,
-            imageNumberText: "03",
-            heading: "Get Funding Fast",
-            subHeading: "When you have a good credit profile and you have built your loan cheaper with us",
-          ),
-        ],
-      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(flex: 1,child: SizedBox(width: 1000,)),
+                      Flexible(
+                        flex:2,
+                        child: CardWidget(
+                          image: Assets.offer8,
+                          imageNumberText: "01",
+                          heading: "Get a Free Quote",
+                          subHeading: "We will customize a loan based on the amount of cash your company need term length",
+                        ),
+                      ),
+                        Flexible(flex: 1,child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(Assets.dottedArrowDown, fit: BoxFit.cover,),
+                        ],
+                      )),
+                      Flexible(
+                        flex:2,
+                        child: CardWidget(
+                          image: Assets.offer2,
+                          imageNumberText: "02",
+                          heading: "Get an Instant Decision",
+                          subHeading: "We provide online instant cash loans with quick approval that suits your term length",
+                        ),
+                      ),
+                      Flexible(flex: 1,child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(Assets.dottedArrowUp, fit: BoxFit.cover,),
+                        ],
+                      )),
+                      Flexible(
+                        flex:2,
+                        child: CardWidget(
+                          image: Assets.offer3,
+                          imageNumberText: "03",
+                          heading: "Get Funding Fast",
+                          subHeading: "When you have a good credit profile and you have built your loan cheaper with us",
+                        ),
+                      ),
+                      Flexible(flex: 1,child: SizedBox(width: 1000,)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+        else {
+          return Container(
+            width: double.maxFinite,
+            // height: 500,
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            alignment: Alignment.center,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("A QUICK & TRANSPARENT PROCESS",style: TextStyle(color: Colors.black54),),
+                  ],
+                ),
+                SizedBox(height: 10,),
+                RichText(textAlign: TextAlign.center,
+                    text: TextSpan(
+                        style: TextStyle(color: Colors.black,fontSize: 28),
+                        children: [
+                          TextSpan(text: "We have a simple ", style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "online application"),
+                        ]
+                    )),
+                UnderLineWidget(width: 100, height: 3, ),
+                SizedBox(height: 50,),
+
+                CardWidget(
+                  image: Assets.offer8,
+                  imageNumberText: "01",
+                  heading: "Get a Free Quote",
+                  subHeading: "We will customize a loan based on the amount of cash your company need term length",
+                ),
+                CardWidget(
+                  image: Assets.offer2,
+                  imageNumberText: "02",
+                  heading: "Get an Instant Decision",
+                  subHeading: "We provide online instant cash loans with quick approval that suits your term length",
+                ),
+                CardWidget(
+                  image: Assets.offer3,
+                  imageNumberText: "03",
+                  heading: "Get Funding Fast",
+                  subHeading: "When you have a good credit profile and you have built your loan cheaper with us",
+                ),
+              ],
+            ),
+          );
+        }
+
+      }
     );
   }
 
-  Widget _card({required String image, required String imageNumberText, required String heading, required String subHeading}) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 50),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+  // Widget _card({required String image, required String imageNumberText, required String heading, required String subHeading}) {
+  //   return Container(
+  //     margin: EdgeInsets.only(bottom: 50),
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children: [
+  //
+  //         Stack(
+  //           children: [
+  //             Container(decoration: BoxDecoration(
+  //                 shape: BoxShape.circle,
+  //               border: Border.all(color: Colors.black12,)
+  //             ),
+  //             width: 120,
+  //             height: 120,
+  //             child: ClipOval(
+  //               child: Padding(
+  //                 padding: const EdgeInsets.all(15.0),
+  //                 child: Image.asset( image, fit: BoxFit.contain, color: Colors.deepOrange,),
+  //               ),
+  //             ),),
+  //
+  //             Positioned(
+  //               top: 0,
+  //                 right: 0,
+  //                 child: Container(
+  //                   padding: EdgeInsets.all(5),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.black,
+  //                   shape: BoxShape.circle,
+  //                   border: Border.all(color: Colors.black12,)
+  //               ),
+  //               width: 30,
+  //               height: 30,
+  //                   child: Text(imageNumberText),
+  //             ))
+  //           ],
+  //         ),
+  //         SizedBox(height: 30,),
+  //         Text(heading, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, wordSpacing: 1, fontSize: 20),),
+  //         SizedBox(height: 20,),
+  //         RichText(textAlign: TextAlign.center,text: TextSpan(text: subHeading, style: TextStyle(color: Colors.black54, wordSpacing: 1, fontSize: 15)),),
+  //       ],
+  //     ),
+  //   );
+  // }
+}
 
-          Stack(
-            children: [
-              Container(decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                border: Border.all(color: Colors.black12,)
-              ),
-              width: 120,
-              height: 120,
-              child: ClipOval(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Image.asset( image, fit: BoxFit.contain, color: Colors.deepOrange,),
-                ),
-              ),),
 
-              Positioned(
-                top: 0,
-                  right: 0,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.black12,)
+class CardWidget extends StatelessWidget {
+  final String image;
+  final String imageNumberText;
+  final String heading;
+  final String subHeading;
+
+  CardWidget({
+    required this.image,
+    required this.imageNumberText,
+    required this.heading,
+    required this.subHeading,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if(width > Constants.desktop_view) {
+          return Container(
+            margin: EdgeInsets.only(bottom: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.black12,
+                        ),
+                      ),
+                      width: 120,
+                      height: 120,
+                      child: ClipOval(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Image.asset(
+                            image,
+                            fit: BoxFit.contain,
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.black12,
+                          ),
+                        ),
+                        width: 30,
+                        height: 30,
+                        child: Text(imageNumberText),
+                      ),
+                    ),
+                  ],
                 ),
-                width: 30,
-                height: 30,
-                    child: Text(imageNumberText),
-              ))
-            ],
-          ),
-          SizedBox(height: 30,),
-          Text(heading, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, wordSpacing: 1, fontSize: 20),),
-          SizedBox(height: 20,),
-          RichText(textAlign: TextAlign.center,text: TextSpan(text: subHeading, style: TextStyle(color: Colors.black54, wordSpacing: 1, fontSize: 15)),),
-        ],
-      ),
+                SizedBox(height: 30),
+                Text(
+                  heading,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 1,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(height: 10),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: subHeading,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      wordSpacing: 1,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+        else {
+          return Container(
+            margin: EdgeInsets.only(bottom: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.black12,
+                        ),
+                      ),
+                      width: 120,
+                      height: 120,
+                      child: ClipOval(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Image.asset(
+                            image,
+                            fit: BoxFit.contain,
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.black12,
+                          ),
+                        ),
+                        width: 30,
+                        height: 30,
+                        child: Text(imageNumberText),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Text(
+                  heading,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 1,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(height: 20),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: subHeading,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      wordSpacing: 1,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+      }
     );
   }
 }

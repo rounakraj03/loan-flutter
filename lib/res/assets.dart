@@ -12,6 +12,8 @@ class Assets {
   static const String imageFrame2 = "assets/images/frame2.png";
   static const String secondWidgetImage = "assets/images/secondWidgetImage.jpg";
   static const String sliderGirlImage = "assets/images/sliderGirlImage.png";
+  static const String dottedArrowUp = "assets/images/dottedArrowUp.png";
+  static const String dottedArrowDown = "assets/images/dottedArrowDown.png";
 
   static const String offer1 = "assets/images/offer1.png";
   static const String offer2 = "assets/images/offer2.png";
