@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
+import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/widgets/emi_calculator.dart';
 import 'package:flutter_loan/widgets/footer.dart';
 import 'package:flutter_loan/widgets/homeWidgets.dart';
@@ -29,8 +30,20 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   NavBarWidget(),
                   HomeOneWidget(),
-                  HomeTwoWidget(),
-                  HomeThreeWidget(),
+                  (size.width > Constants.desktop_view) ?
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(flex:1,child: HomeTwoWidget()),
+                        SizedBox(width: 10,),
+                        Flexible(flex:1,child: HomeThreeWidget()),
+                      ],
+                    ) : Column(
+                    children: [
+                      HomeTwoWidget(),
+                      HomeThreeWidget(),
+                    ],
+                  ),
                   HomeFourWidget(),
                   EmiCalculatorWidget(),
                   HomeFiveWidget(),

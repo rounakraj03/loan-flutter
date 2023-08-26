@@ -61,6 +61,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                   ),
                 )
             ),
+            (width < 1450) ? SizedBox() :
             Positioned(
               bottom: 0,
               child: Container(
@@ -258,8 +259,54 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
     double height = MediaQuery.of(context).size.height;
     return LayoutBuilder(
       builder: (context, constraints) {
-      if(constraints.maxWidth > Constants.desktop_view) {
-        return SizedBox();
+      if(constraints.maxWidth > Constants.desktop_view-300) {
+        return Stack  (
+          children: [
+            Container(
+              height: 700,
+              child: Image.asset(Assets.imageFrame2, fit: BoxFit.cover, color: Colors.transparent.withOpacity(0.1),),
+            ),
+            Positioned(
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(38.0),
+                  margin: const EdgeInsets.only(left: 48.0, top: 48.0, bottom: 48.0),
+                  child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.orange, width: 10),
+                      ),
+                      padding: const EdgeInsets.all(30),
+                      child: Image.asset(Assets.secondWidgetImage, fit: BoxFit.cover,)),
+                )),
+            Positioned(
+                bottom: 50,
+                right: 0,
+                child: VisibilityDetector(
+                  key: Key('second-widget-home-two'),
+                  onVisibilityChanged: (info) {
+                    if(info.visibleFraction > 0.8){
+                      print("forwarding");
+                      _controller.forward();
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
+                    width: constraints.maxWidth * 0.3,
+                    color: Color(0xff323232),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(alignment: Alignment.center,width: 100,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 33),)),
+                        Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14))))
+                      ],
+                    ),
+                  ),
+                ))
+          ],
+        );
       } else {
         return Container(
           child: Stack(
@@ -321,8 +368,49 @@ class HomeThreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(builder: (context, constraints) {
-      if(constraints.maxWidth > Constants.desktop_view) {
-        return SizedBox();
+      if(constraints.maxWidth > (Constants.desktop_view -300)) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("ABOUT COMPANY", style: TextStyle(color: Colors.grey, fontSize: 18),),
+                ],
+              ),
+              SizedBox(height: 20,),
+              RichText(
+                text: TextSpan(
+                    style: TextStyle(color: Colors.black, fontSize: 32),
+                    children: [
+                      TextSpan(text: "Small Business Loans For ",style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: "a Daily Expenses"),
+                    ]
+                ),
+              ),
+              SizedBox(height: 5,),
+              UnderLineWidget(height: 3, width: 100,),
+              SizedBox(height: 30,),
+
+              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Colors.black45, wordSpacing: 1, fontWeight: FontWeight.w700,fontSize: 16),),
+              SizedBox(height: 30,),
+              Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.black38, wordSpacing: 1,fontSize: 16),),
+              SizedBox(height: 30,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomCircularElevatedButton(child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,), onPressed: (){}),
+                  SizedBox(width: 20,),
+                  Text("How We Work", style: TextStyle(wordSpacing: 1, color: Colors.black,fontSize: 16),)
+                ],
+              )
+
+            ],
+
+          ),
+        );
       }
       else {
         return Padding(
