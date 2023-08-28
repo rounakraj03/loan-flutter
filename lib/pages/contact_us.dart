@@ -5,6 +5,7 @@ import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/widgets/contactUsWidgets.dart';
 import 'package:flutter_loan/widgets/footer.dart';
 import 'package:flutter_loan/widgets/navbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 
@@ -33,9 +34,28 @@ class _ContactUsState extends State<ContactUs> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      AspectRatio(
-                        aspectRatio: 16/6,
-                          child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
+                      Stack(
+                        children: [
+                          AspectRatio(
+                            aspectRatio:  (size.width > Constants.desktop_view) ? 16/6 : 16/25,
+                              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
+
+                          Positioned(
+                            // left: 20,
+                            top: 0,
+                            bottom: 0,
+                            left: size.width/10,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Contact Us", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
+                                Text("Mentry - Contact Us", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                       (size.width > Constants.desktop_view) ?
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
