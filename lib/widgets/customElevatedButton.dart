@@ -31,6 +31,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
       onTapDown: (details){
         setState(() {
           isHovering = true;
+          widget.onPressed();
         });
       },
       onTapCancel: () {

@@ -119,13 +119,13 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
             padding: EdgeInsets.only(left: width * 0.05, right: width * 0.05, bottom: 50),
             color: Color(0xfff8f8f8),
             width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Form(
-                  key: contactFormKey,
-                  child: Container(
+            child: Form(
+              key: contactFormKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
                     padding: EdgeInsets.only(top: 70),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,75 +144,84 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
                       ],
                     ),
                   ),
-                ),
-               Row(
-                 children: [
-                   Flexible(
-                     flex: 1,
-                     child: FtTextField(
-                       controller: nameController,
-                       hint: "Your Name",
-                       inputType: TextInputType.name,
-                       validatorType: ValidatorType.validateName,
+                 Row(
+                   children: [
+                     Flexible(
+                       flex: 1,
+                       child: FtTextField(
+                         controller: nameController,
+                         hint: "Your Name",
+                         inputType: TextInputType.name,
+                         validatorType: ValidatorType.validateName,
+                       ),
                      ),
-                   ),
-                   SizedBox(width: 30,),
-                   Flexible(
-                     flex: 1,
-                     child: FtTextField(
-                       controller: phoneController,
-                       hint: "Your Phone",
-                       inputType: TextInputType.number,
-                       validatorType: ValidatorType.validateMobile,
+                     SizedBox(width: 30,),
+                     Flexible(
+                       flex: 1,
+                       child: FtTextField(
+                         controller: phoneController,
+                         hint: "Your Phone",
+                         inputType: TextInputType.number,
+                         validatorType: ValidatorType.validateMobile,
+                       ),
                      ),
-                   ),
-                 ],
-               ),
-                SizedBox(height: 25,),
-                Row(
-                 children: [
-                   Flexible(
-                     flex: 1,
-                     child: FtTextField(
-                       controller: emailController,
-                       hint: "Your Email",
-                       inputType: TextInputType.emailAddress,
-                       validatorType: ValidatorType.validateEmail,
+                   ],
+                 ),
+                  SizedBox(height: 25,),
+                  Row(
+                   children: [
+                     Flexible(
+                       flex: 1,
+                       child: FtTextField(
+                         controller: emailController,
+                         hint: "Your Email",
+                         inputType: TextInputType.emailAddress,
+                         validatorType: ValidatorType.validateEmail,
+                       ),
                      ),
-                   ),
-                   SizedBox(width: 30,),
-                   Flexible(
-                     flex: 1,
-                     child: FtTextField(
-                       controller: websiteController,
-                       hint: "Website URL",
-                       inputType: TextInputType.text,
-                       validatorType: ValidatorType.validateNotNull,
+                     SizedBox(width: 30,),
+                     Flexible(
+                       flex: 1,
+                       child: FtTextField(
+                         controller: websiteController,
+                         hint: "Website URL",
+                         inputType: TextInputType.text,
+                         // validatorType: ValidatorType.validateNotNull,
+                       ),
                      ),
-                   ),
-                 ],
-               ),
-                SizedBox(height: 25,),
-                FtTextField(
-                  controller: messageController,
-                  hint: "Message",
-                  inputType: TextInputType.text,
-                  validatorType: ValidatorType.validateNotNull,
-                  maxLines: 7,
-                ),
+                   ],
+                 ),
+                  SizedBox(height: 25,),
+                  FtTextField(
+                    controller: messageController,
+                    hint: "Message",
+                    inputType: TextInputType.text,
+                    // validatorType: ValidatorType.validateNotNull,
+                    maxLines: 7,
+                  ),
 
-                SizedBox(height: 25,),
+                  SizedBox(height: 25,),
 
-                CustomElevatedButton(child: "SEND MESSAGE", onPressed: (){
-                  if(contactFormKey.currentState!.validate()) {
-                    print("Validated");
-                  }else{
-                    print("not validated");
-                  }
+                  CustomElevatedButton(child: "SEND MESSAGE", onPressed: (){
+                    if(contactFormKey.currentState!.validate()) {
+                      setState(() {
+                        print("Validated -> \n name -> ${nameController.text} \n phoneNumber -> ${phoneController.text} \n emailController -> ${emailController.text} \n websiteURL -> ${websiteController.text} \n message -> ${messageController.text}");
+                        nameController.text = "";
+                        phoneController.text = "";
+                        emailController.text = "";
+                        websiteController.text = "";
+                        messageController.text = "";
+                      });
 
-                }, width: 200,)
 
-              ],
+                    }else{
+                      print("not validated");
+                    }
+
+                  }, width: 200,)
+
+                ],
+              ),
             ),
           );
         }

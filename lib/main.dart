@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: MessageHandler.scaffoldMessengerKey,
         theme: AppTheme.theme,
-        routes: {},
+        // routes: {},
         // home: HomePage(),
         home: ContactUs(),
       ),
