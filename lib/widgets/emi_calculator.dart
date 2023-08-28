@@ -59,171 +59,171 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Container(
-                      // padding: EdgeInsets.symmetric(vertical: 50),
-                        width: width/2,
-                        child: Image.asset(Assets.sliderGirlImage, fit: BoxFit.cover,)),
+                    Flexible(flex:1,child: AspectRatio(aspectRatio: 8/8,child: Image.asset(Assets.sliderGirlImage5, fit: BoxFit.cover,))),
 
                     Flexible(
                       flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                        width: width/2,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              // colors: [Colors.red.shade300, Colors.red.shade600, Colors.red.shade800],
-                              colors: [Color(0xfffe9860),Color(0xfffc8761), Color(0xfffb7262)],
-                              // begin: Alignment.topLeft,
-                              // end: Alignment.bottomRight
-                            )
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("CALCULATE YOUR LOAN", style: TextStyle(letterSpacing: 2, wordSpacing: 2), ),
-                            SizedBox(height: 10,),
-                            RichText(
-                              text:  TextSpan(
-                                  style: TextStyle(letterSpacing: 2, wordSpacing: 2, color: Colors.white, fontSize: 40),
-                                  children:  [
-                                    TextSpan(
-                                        text: "How Much ", style: TextStyle(fontWeight: FontWeight.bold)
-                                    ),
-                                    TextSpan(
-                                        text: "Do You Need?"
-                                    )
-                                  ]
-                              ),),
-                            SizedBox(height: 30,),
-                            //slider with text showing 1 lakh, 5 lakh, 10 lakh
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text("1 lakh"),
-                                    Container(width: 100, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
-                                    Text("1 crore"),
-                                  ],
-                                ),
-                                Slider(
+                      child: AspectRatio(
+                        aspectRatio: 8/8,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                          width: width/2,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                // colors: [Colors.red.shade300, Colors.red.shade600, Colors.red.shade800],
+                                colors: [Color(0xfffe9860),Color(0xfffc8761), Color(0xfffb7262)],
+                                // begin: Alignment.topLeft,
+                                // end: Alignment.bottomRight
+                              )
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("CALCULATE YOUR LOAN", style: TextStyle(letterSpacing: 2, wordSpacing: 2), ),
+                              SizedBox(height: 10,),
+                              RichText(
+                                text:  TextSpan(
+                                    style: TextStyle(letterSpacing: 2, wordSpacing: 2, color: Colors.white, fontSize: 40),
+                                    children:  [
+                                      TextSpan(
+                                          text: "How Much ", style: TextStyle(fontWeight: FontWeight.bold)
+                                      ),
+                                      TextSpan(
+                                          text: "Do You Need?"
+                                      )
+                                    ]
+                                ),),
+                              SizedBox(height: 30,),
+                              //slider with text showing 1 lakh, 5 lakh, 10 lakh
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text("1 lakh"),
+                                      Container(width: 100, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
+                                      Text("1 crore"),
+                                    ],
+                                  ),
+                                  Slider(
+                                      activeColor: Colors.black,
+                                      inactiveColor: Colors.black45,
+                                      min: 100000,
+                                      max: 10000000,
+                                      value: _sliderValueAmount,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _sliderValueAmount = (value / 50000).round() * 50000;
+                                          calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
+                                        });
+                                      }
+                                  ),
+
+                                  SizedBox(height: 50,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text("2 percent"),
+                                      Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueInterest).toStringAsFixed(2) + " percent")), // Dynamic value
+                                      Text("25 percent"),
+                                    ],
+                                  ),
+                                  Slider(
                                     activeColor: Colors.black,
                                     inactiveColor: Colors.black45,
-                                    min: 100000,
-                                    max: 10000000,
-                                    value: _sliderValueAmount,
+                                    value: _sliderValueInterest,
+                                    min: 2.0,         // Start from 2%
+                                    max: 25.0,        // End at 25%
+                                    divisions: 92,    // (25-2)/0.25 = 92 divisions
                                     onChanged: (value) {
                                       setState(() {
-                                        _sliderValueAmount = (value / 50000).round() * 50000;
+                                        _sliderValueInterest = value;
                                         calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
                                       });
-                                    }
-                                ),
+                                    },
+                                  ),
+                                  SizedBox(height: 50,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text("1 month"),
+                                      Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueMonths).toStringAsFixed(1) + " year")), // Dynamic value
+                                      Text("30 years"),
+                                    ],
+                                  ),
+                                  Slider(
+                                    activeColor: Colors.black,
+                                    inactiveColor: Colors.black45,
+                                    value: _sliderValueMonths,
+                                    min: 0,
+                                    max: 30,
+                                    divisions: 60,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _sliderValueMonths = value;
+                                        calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
+                                      });
+                                    },),
 
-                                SizedBox(height: 50,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text("2 percent"),
-                                    Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueInterest).toStringAsFixed(2) + " percent")), // Dynamic value
-                                    Text("25 percent"),
-                                  ],
-                                ),
-                                Slider(
-                                  activeColor: Colors.black,
-                                  inactiveColor: Colors.black45,
-                                  value: _sliderValueInterest,
-                                  min: 2.0,         // Start from 2%
-                                  max: 25.0,        // End at 25%
-                                  divisions: 92,    // (25-2)/0.25 = 92 divisions
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _sliderValueInterest = value;
-                                      calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
-                                    });
-                                  },
-                                ),
-                                SizedBox(height: 50,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text("1 month"),
-                                    Container(width: 100, alignment: Alignment.center, child: Text((_sliderValueMonths).toStringAsFixed(1) + " year")), // Dynamic value
-                                    Text("30 years"),
-                                  ],
-                                ),
-                                Slider(
-                                  activeColor: Colors.black,
-                                  inactiveColor: Colors.black45,
-                                  value: _sliderValueMonths,
-                                  min: 0,
-                                  max: 30,
-                                  divisions: 60,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _sliderValueMonths = value;
-                                      calculateMyEmi(_sliderValueAmount, _sliderValueInterest, _sliderValueMonths);
-                                    });
-                                  },),
-
-                                SizedBox(height: 50,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        width: width/6,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
-                                            SizedBox(height: 20,),
-                                            Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
-                                          ],
+                                  SizedBox(height: 50,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Flexible(
+                                        flex: 1,
+                                        child: Container(
+                                          width: width/6,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
+                                              SizedBox(height: 20,),
+                                              Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        width: width/6,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
-                                            SizedBox(height: 20,),
-                                            Text(totalInterest.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
-                                          ],
+                                      Flexible(
+                                        flex: 1,
+                                        child: Container(
+                                          width: width/6,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
+                                              SizedBox(height: 20,),
+                                              Text(totalInterest.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        width: width/6,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                      Flexible(
+                                        flex: 1,
+                                        child: Container(
+                                          width: width/6,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
 
-                                          children: [
-                                            Text("You must return :", style: TextStyle(letterSpacing: 1),),
-                                            SizedBox(height: 20,),
-                                            Text((_sliderValueAmount+totalInterest).toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
-                                          ],
+                                            children: [
+                                              Text("You must return :", style: TextStyle(letterSpacing: 1),),
+                                              SizedBox(height: 20,),
+                                              Text((_sliderValueAmount+totalInterest).toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
 
-                                SizedBox(height: 70,),
-                                Center(child: CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){}, width: 200,)),
-                                SizedBox(height: 20,)
-                              ],
-                            )
+                                  SizedBox(height: 70,),
+                                  Center(child: CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){}, width: 200,)),
+                                  SizedBox(height: 20,)
+                                ],
+                              )
 
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

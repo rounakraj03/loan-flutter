@@ -13,6 +13,10 @@ class Assets {
   static const String imageFrame2 = "assets/images/frame2.png";
   static const String secondWidgetImage = "assets/images/secondWidgetImage.jpg";
   static const String sliderGirlImage = "assets/images/sliderGirlImage.png";
+  static const String sliderGirlImage2 = "assets/images/sliderGirlImage2.jpg";
+  static const String sliderGirlImage3 = "assets/images/sliderGirlImage3.jpg";
+  static const String sliderGirlImage4 = "assets/images/sliderGirlImage4.jpg";
+  static const String sliderGirlImage5 = "assets/images/sliderGirlImage5.jpg";
   static const String dottedArrowUp = "assets/images/dottedArrowUp.png";
   static const String dottedArrowDown = "assets/images/dottedArrowDown.png";
 

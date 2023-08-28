@@ -18,10 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    int navBarSelectedItem = Provider.of<NavBarProvider>(context).navBarScreenIndex;
-    return Scaffold(
-      backgroundColor: Colors.black87,
-      body: Consumer<NavBarProvider>(
+    return Consumer<NavBarProvider>(
         builder: (_, provider, child) {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -61,8 +58,7 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-      ),
-    );
+      );
   }
 }
 
