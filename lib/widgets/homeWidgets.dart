@@ -381,20 +381,20 @@ class HomeThreeWidget extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       if(constraints.maxWidth > (Constants.desktop_view -300)) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 60),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text("ABOUT COMPANY", style: TextStyle(color: Colors.grey, fontSize: 18),),
+                  Text("ABOUT COMPANY", style: GoogleFonts.montserrat(color: Color(0xff757575), fontSize: 14, letterSpacing: 1, fontWeight: FontWeight.w500),),
                 ],
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               RichText(
                 text: TextSpan(
-                    style: TextStyle(color: Colors.black, fontSize: 32),
+                    style: GoogleFonts.montserrat(color: Color(0xff222222), fontSize: 42),
                     children: [
                       TextSpan(text: "Small Business Loans For ",style: TextStyle(fontWeight: FontWeight.bold)),
                       TextSpan(text: "a Daily Expenses"),
@@ -405,7 +405,7 @@ class HomeThreeWidget extends StatelessWidget {
               UnderLineWidget(height: 3, width: 100,),
               SizedBox(height: 30,),
 
-              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Colors.black45, wordSpacing: 1, fontWeight: FontWeight.w700,fontSize: 16),),
+              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Color(0xff666666), wordSpacing: 1, fontWeight: FontWeight.w700,fontSize: 16),),
               SizedBox(height: 30,),
               Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.black38, wordSpacing: 1,fontSize: 16),),
               SizedBox(height: 30,),
@@ -505,13 +505,13 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("OUR SERVICES", style: TextStyle(color: Colors.grey, fontSize: 18,wordSpacing: 1, letterSpacing: 2 ),),
-                        SizedBox(height: 20,),
+                        Text("OUR SERVICES", style: TextStyle(color: Colors.grey, fontSize: 14,wordSpacing: 1, letterSpacing: 2, fontWeight: FontWeight.w500 ),),
+                        SizedBox(height: 10,),
                         RichText(
                           text: TextSpan(
-                          style: TextStyle(color: Colors.black, fontSize: 40,wordSpacing: 2, letterSpacing: 3 ),
+                          style: TextStyle(color: Colors.black, fontSize: 38,wordSpacing: 2, letterSpacing: 3 , fontWeight: FontWeight.w400),
                           children: [
-                            TextSpan(text: "What We ",style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "What We ",style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(text: "Offer for You"),
                           ]
                       ),
@@ -530,19 +530,19 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                 CarouselSlider(
                     items: [
                       CardContainer(assetName: Assets.offer1, heading: "Business Loan", subHeading: "Strategy experience and analytical expertise combine",),
-                      CardContainer(assetName: Assets.offer2, heading: "Commercial Loan", subHeading: "Enable decision making and create Business plan",),
+                      CardContainer(assetName: Assets.offer2, heading: "Loan against Property", subHeading: "Enable decision making and create Business plan",),
                       CardContainer(assetName: Assets.offer3, heading: "Personal Loan", subHeading: "Capital market perspective to growth business",),
                       CardContainer(assetName: Assets.offer4, heading: "Home Loan", subHeading: "Linking corporate business strategy capital markets",),
-                      CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
-                      CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
+                      // CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
+                      // CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
                       CardContainer(assetName: Assets.offer7, heading: "Car Loan", subHeading: "Technology is an integral differentiating competition",),
-                      CardContainer(assetName: Assets.offer8, heading: "Investment Loan", subHeading: "Potentially of your business that both influences",),
-                      CardContainer(assetName: Assets.offer9, heading: "Goal Loan", subHeading: "Expert analysis provocative points of marketing",),
+                      CardContainer(assetName: Assets.offer8, heading: "General Insurance", subHeading: "Potentially of your business that both influences",),
+                      CardContainer(assetName: Assets.offer9, heading: "Health Insurance", subHeading: "Expert analysis provocative points of marketing",),
                     ],
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(
                       height: 300,
-                      viewportFraction: 0.25,
+                      viewportFraction: 0.30,
                       initialPage: 5,
                       enableInfiniteScroll: false,
                       reverse: false,
