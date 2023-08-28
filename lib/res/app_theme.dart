@@ -11,6 +11,7 @@ class AppTheme {
               foregroundColor: MaterialStateProperty.all(Colors.blue)
           )
       ),
+      sliderTheme: SliderThemeData(tickMarkShape: SliderTickMarkShape.noTickMark),
       scaffoldBackgroundColor: Colors.black87,
       iconTheme: const IconThemeData(color: Colors.white,),
       // textTheme: GoogleFonts.robotoCondensedTextTheme()
