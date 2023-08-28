@@ -5,6 +5,7 @@ import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
 import 'package:flutter_loan/widgets/footer.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeOneWidget extends StatefulWidget {
@@ -268,46 +269,53 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
           children: [
             Container(
               height: 700,
+              width: constraints.maxWidth/2,
               child: Image.asset(Assets.imageFrame2, fit: BoxFit.cover, color: Colors.transparent.withOpacity(0.1),),
             ),
-            Positioned(
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  padding: const EdgeInsets.all(38.0),
-                  margin: const EdgeInsets.only(left: 48.0, top: 48.0, bottom: 48.0),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.orange, width: 10),
+            Stack(
+              children: [
+                Container(
+                  height: 400,
+                    width: 400,
+                    margin: EdgeInsets.all(100),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xfffea060), width: 10),
+                    ),),
+                Positioned(
+                    top:140,
+                    left: 140,
+                    child: Container(
+                        height:400,
+                        width:400,
+                        child: Image.asset(Assets.secondWidgetImage, fit: BoxFit.cover,)
+                    )
+                ),
+                Positioned(
+                    bottom: 20,
+                    right: 20,
+                    child: VisibilityDetector(
+                      key: Key('second-widget-home-two'),
+                      onVisibilityChanged: (info) {
+                        if(info.visibleFraction > 0.8){
+                          _controller.forward();
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+                        width: constraints.maxWidth * 0.30,
+                        color: Color(0xff323232),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(alignment: Alignment.center,width: 100,child: Text("${_animation.value.toInt()}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize:70, letterSpacing: 2),)),
+                            Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: GoogleFonts.mulish(fontWeight: FontWeight.w600, fontSize: 14, wordSpacing: 1))))
+                          ],
+                        ),
                       ),
-                      padding: const EdgeInsets.all(30),
-                      child: Image.asset(Assets.secondWidgetImage, fit: BoxFit.cover,)),
-                )),
-            Positioned(
-                bottom: 50,
-                right: 0,
-                child: VisibilityDetector(
-                  key: Key('second-widget-home-two'),
-                  onVisibilityChanged: (info) {
-                    if(info.visibleFraction > 0.8){
-                      _controller.forward();
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
-                    width: constraints.maxWidth * 0.3,
-                    color: Color(0xff323232),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(alignment: Alignment.center,width: 100,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 33),)),
-                        Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14))))
-                      ],
-                    ),
-                  ),
-                ))
+                    ))
+
+              ],
+            ),
           ],
         );
       } else {
