@@ -15,6 +15,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -18,6 +18,15 @@ class ContactUs extends StatefulWidget {
 }
 
 class _ContactUsState extends State<ContactUs> {
+
+
+  @override
+  void initState() {
+    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -37,7 +46,7 @@ class _ContactUsState extends State<ContactUs> {
                       Stack(
                         children: [
                           AspectRatio(
-                            aspectRatio:  (size.width > Constants.desktop_view) ? 16/6 : 16/25,
+                            aspectRatio:  (size.width > Constants.desktop_view) ? 16/9 : 16/25,
                               child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
 
                           Positioned(

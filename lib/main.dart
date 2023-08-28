@@ -25,9 +25,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: MessageHandler.scaffoldMessengerKey,
         theme: AppTheme.theme,
-        // routes: {},
-        // home: HomePage(),
-        home: ContactUs(),
+        routes: {
+          '': (context) => HomePage(),
+          '/home' : (context) => HomePage(),
+          '/contact': (context) => ContactUs()
+        },
+        initialRoute: '/home',
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(builder: (context) => HomePage());
+        },
+        home: HomePage(),
+        // home: ContactUs(),
       ),
     );
   }
