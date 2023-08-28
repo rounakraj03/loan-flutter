@@ -30,7 +30,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                       colors: [Colors.white, Colors.white70, Colors.white60]
                   )
               ),
-              child: Image.asset(Assets.manMug, fit: BoxFit.cover,),
+              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,),
             ),
             Positioned(
                 top: 0,
@@ -49,8 +49,10 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                             style: TextStyle(wordSpacing: 1, fontSize: 80, color: Colors.white),
                             children: [
                               TextSpan(text:"Simple. Transparent. Secure\n\n", style: TextStyle(fontSize: 25, wordSpacing: 2)),
-                              TextSpan(text: "Building a brighter\n", style: TextStyle(fontWeight: FontWeight.bold) ),
-                              TextSpan(text: "financial future"),
+                              TextSpan(text: "Building a ", style: TextStyle(fontWeight: FontWeight.bold) ),
+                              TextSpan(text: "brighter\n", style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xffff5854)) ),
+                              TextSpan(text: "financial "),
+                              TextSpan(text: "future", style: TextStyle(color: Color(0xffff5854))),
                             ]
                         ),
                       ),
@@ -184,7 +186,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                   colors: [Colors.white, Colors.white70, Colors.white60]
                 )
               ),
-              child: Image.asset(Assets.manMug, fit: BoxFit.cover,),
+              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,),
             ),
             Positioned(
                 top: 0,
@@ -202,8 +204,10 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                         text: TextSpan(
                           style: TextStyle(wordSpacing: 1, fontSize: 24, color: Colors.white),
                             children: [
-                              TextSpan(text: "Building a brighter ", style: TextStyle(fontWeight: FontWeight.bold) ),
-                              TextSpan(text: "financial future"),
+                              TextSpan(text: "Building a ", style: TextStyle(fontWeight: FontWeight.bold) ),
+                              TextSpan(text: "brighter ", style: TextStyle(color: Color(0xffff5854))),
+                              TextSpan(text: "financial "),
+                              TextSpan(text: "future", style: TextStyle(color: Color(0xffff5854))),
                             ]
                         ),
                       ),

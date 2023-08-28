@@ -25,32 +25,39 @@ class _HomePageState extends State<HomePage> {
         builder: (_, provider, child) {
           return Scaffold(
             backgroundColor: Colors.white,
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  NavBarWidget(),
-                  HomeOneWidget(),
-                  (size.width > Constants.desktop_view) ?
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            body: Column(
+              children: [
+                NavBarWidget(),
+                
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
                       children: [
-                        Flexible(flex:1,child: HomeTwoWidget()),
-                        SizedBox(width: 10,),
-                        Flexible(flex:1,child: HomeThreeWidget()),
-                      ],
-                    ) : Column(
-                    children: [
-                      HomeTwoWidget(),
-                      HomeThreeWidget(),
-                    ],
-                  ),
-                  HomeFourWidget(),
-                  EmiCalculatorWidget(),
-                  HomeFiveWidget(),
-                  Footer()
+                        HomeOneWidget(),
+                        (size.width > Constants.desktop_view) ?
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Flexible(flex:1,child: HomeTwoWidget()),
+                              SizedBox(width: 10,),
+                              Flexible(flex:1,child: HomeThreeWidget()),
+                            ],
+                          ) : Column(
+                          children: [
+                            HomeTwoWidget(),
+                            HomeThreeWidget(),
+                          ],
+                        ),
+                        HomeFourWidget(),
+                        EmiCalculatorWidget(),
+                        HomeFiveWidget(),
+                        Footer()
 
-                ],
-              ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         },
