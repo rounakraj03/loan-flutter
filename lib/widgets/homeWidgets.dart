@@ -529,15 +529,13 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                 // add carousel slider
                 CarouselSlider(
                     items: [
-                      CardContainer(assetName: Assets.offer1, heading: "Business Loan", subHeading: "Strategy experience and analytical expertise combine",),
-                      CardContainer(assetName: Assets.offer2, heading: "Loan against Property", subHeading: "Enable decision making and create Business plan",),
-                      CardContainer(assetName: Assets.offer3, heading: "Personal Loan", subHeading: "Capital market perspective to growth business",),
-                      CardContainer(assetName: Assets.offer4, heading: "Home Loan", subHeading: "Linking corporate business strategy capital markets",),
-                      // CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
-                      // CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
-                      CardContainer(assetName: Assets.offer7, heading: "Car Loan", subHeading: "Technology is an integral differentiating competition",),
-                      CardContainer(assetName: Assets.offer8, heading: "General Insurance", subHeading: "Potentially of your business that both influences",),
-                      CardContainer(assetName: Assets.offer9, heading: "Health Insurance", subHeading: "Expert analysis provocative points of marketing",),
+                      CardContainer(assetName: Assets.iconHandShake, heading: "Business Loan", subHeading: " Empowering your business aspirations with our tailored solutions",),
+                      CardContainer(assetName: Assets.iconProperty, heading: "Loan against Property", subHeading: "Unlock the value of your property for a brighter financial future",),
+                      CardContainer(assetName: Assets.iconMen, heading: "Personal Loan", subHeading: "Elevating personal dreams with flexible financing options",),
+                      CardContainer(assetName: Assets.iconHomeLoan, heading: "Home Loan", subHeading: "Bridging the gap between you and your dream home",),
+                      CardContainer(assetName: Assets.iconCar, heading: "Car Loan", subHeading: "Driving your ambitions forward with our easy auto loans",),
+                      CardContainer(assetName: Assets.iconHandSafety, heading: "General Insurance", subHeading: "Safeguarding your assets against unforeseen challenges",),
+                      CardContainer(assetName: Assets.iconHandHealth, heading: "Health Insurance", subHeading: "Investing in your health, ensuring peace of mind",),
                     ],
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(
@@ -617,15 +615,13 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                 // add carousel slider
                 CarouselSlider(
                     items: [
-                      CardContainer(assetName: Assets.offer1, heading: "Business Loan", subHeading: "Strategy experience and analytical expertise combine",),
-                      CardContainer(assetName: Assets.offer2, heading: "Commercial Loan", subHeading: "Enable decision making and create Business plan",),
-                      CardContainer(assetName: Assets.offer3, heading: "Personal Loan", subHeading: "Capital market perspective to growth business",),
-                      CardContainer(assetName: Assets.offer4, heading: "Home Loan", subHeading: "Linking corporate business strategy capital markets",),
-                      CardContainer(assetName: Assets.offer5, heading: "Construction Loan", subHeading: "Managing effectively source of competitive advantage",),
-                      CardContainer(assetName: Assets.offer6, heading: "Education Loan", subHeading: "Organizing financial strategy competitive business",),
-                      CardContainer(assetName: Assets.offer7, heading: "Car Loan", subHeading: "Technology is an integral differentiating competition",),
-                      CardContainer(assetName: Assets.offer8, heading: "Investment Loan", subHeading: "Potentially of your business that both influences",),
-                      CardContainer(assetName: Assets.offer9, heading: "Goal Loan", subHeading: "Expert analysis provocative points of marketing",),
+                      CardContainer(assetName: Assets.iconHandShake, heading: "Business Loan", subHeading: " Empowering your business aspirations with our tailored solutions",),
+                      CardContainer(assetName: Assets.iconProperty, heading: "Loan against Property", subHeading: "Unlock the value of your property for a brighter financial future",),
+                      CardContainer(assetName: Assets.iconMen, heading: "Personal Loan", subHeading: "Elevating personal dreams with flexible financing options",),
+                      CardContainer(assetName: Assets.iconHomeLoan, heading: "Home Loan", subHeading: "Bridging the gap between you and your dream home",),
+                      CardContainer(assetName: Assets.iconCar, heading: "Car Loan", subHeading: "Driving your ambitions forward with our easy auto loans",),
+                      CardContainer(assetName: Assets.iconHandSafety, heading: "General Insurance", subHeading: "Safeguarding your assets against unforeseen challenges",),
+                      CardContainer(assetName: Assets.iconHandHealth, heading: "Health Insurance", subHeading: "Investing in your health, ensuring peace of mind",),
                     ],
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(

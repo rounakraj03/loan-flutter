@@ -33,4 +33,17 @@ class Assets {
   static const String twitterLogo = "assets/icons/twitterIcon.png";
   static const String youtubeLogo = "assets/icons/youtubeIcon.png";
 
+  static const String iconCar = "assets/icons/iconCar4.png";
+  static const String iconHandHealth = "assets/icons/iconHandHealth.png";
+  static const String iconHandHome = "assets/icons/iconHandHome.png";
+  static const String iconHandMoney = "assets/icons/iconHandMoney.png";
+  static const String iconHandSafety = "assets/icons/iconHandSafety.png";
+  static const String iconHandShake = "assets/icons/iconHandshake.png";
+  static const String iconHomeLoan = "assets/icons/iconHomeLoan.png";
+  static const String iconMen = "assets/icons/iconMen.png";
+  static const String iconMoneyPlant = "assets/icons/iconMoneyPlant.png";
+  static const String iconProgress = "assets/icons/iconProgress.png";
+  static const String iconProperty = "assets/icons/iconProperty.png";
+  static const String iconSuitcase = "assets/icons/iconSuitcase.png";
+
 }
