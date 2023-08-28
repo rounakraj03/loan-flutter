@@ -481,6 +481,7 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if(constraints.maxWidth > Constants.desktop_view) {
+          currentCarouselIndex = 0;
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 250.0, vertical: 50),
             color: Color(0xFFF8f8f8),
