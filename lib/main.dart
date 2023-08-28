@@ -40,3 +40,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//CREATE 1 SERVICE AND APPLY NOW PAGE
