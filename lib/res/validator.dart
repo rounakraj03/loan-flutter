@@ -2,7 +2,8 @@ enum ValidatorType {
   validateEmail,
   validateMobile,
   validateName,
-  validateAddress
+  validateAddress,
+  validateNotNull
 }
 
 class Validator {

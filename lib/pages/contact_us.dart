@@ -20,7 +20,8 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xfff8f8f8),
+      // backgroundColor: Color(0xfff8f8f8),
+      backgroundColor: Colors.white,
       body: Consumer<NavBarProvider>(
         builder: (context, value, child) {
           return Column(
@@ -35,17 +36,18 @@ class _ContactUsState extends State<ContactUs> {
                           child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
                       (size.width > Constants.desktop_view) ?
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Flexible(flex:2, child: ContactUsWidgetOne()),
                           SizedBox(width: 20,),
-                          Flexible(flex:3, child: ContactUsWidgetOne()),
+                          Flexible(flex:3, child: ContactUsWidgetTwo()),
                         ],
                       ) :
                       Column(
                         children: [
                           ContactUsWidgetOne(),
                           SizedBox(width: 20,),
-                          ContactUsWidgetOne(),
+                          ContactUsWidgetTwo(),
                         ],
                       )
                     ],
