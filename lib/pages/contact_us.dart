@@ -22,7 +22,6 @@ class _ContactUsState extends State<ContactUs> {
 
   @override
   void initState() {
-    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
     super.initState();
   }
 

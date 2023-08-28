@@ -18,7 +18,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
     super.initState();
   }
 
