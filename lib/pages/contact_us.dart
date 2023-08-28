@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
+import 'package:flutter_loan/res/app_constants.dart';
+import 'package:flutter_loan/res/assets.dart';
+import 'package:flutter_loan/widgets/contactUsWidgets.dart';
+import 'package:flutter_loan/widgets/navbar.dart';
 import 'package:provider/provider.dart';
 
 
@@ -16,10 +20,40 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Color(0xfff8f8f8),
       body: Consumer<NavBarProvider>(
         builder: (context, value, child) {
-          return SizedBox();
+          return Column(
+            children: [
+              NavBarWidget(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      AspectRatio(
+                        aspectRatio: 16/6,
+                          child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
+                      (size.width > Constants.desktop_view) ?
+                      Row(
+                        children: [
+                          Flexible(flex:2, child: ContactUsWidgetOne()),
+                          SizedBox(width: 20,),
+                          Flexible(flex:3, child: ContactUsWidgetOne()),
+                        ],
+                      ) :
+                      Column(
+                        children: [
+                          ContactUsWidgetOne(),
+                          SizedBox(width: 20,),
+                          ContactUsWidgetOne(),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
         },
       ),
     );

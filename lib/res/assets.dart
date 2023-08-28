@@ -19,6 +19,11 @@ class Assets {
   static const String sliderGirlImage5 = "assets/images/sliderGirlImage5.jpg";
   static const String dottedArrowUp = "assets/images/dottedArrowUp.png";
   static const String dottedArrowDown = "assets/images/dottedArrowDown.png";
+  static const String callIcon = "assets/images/callIcon.png";
+  static const String mailIcon = "assets/images/mailIcon.png";
+  static const String mapsIcon = "assets/images/mapsIcon.png";
+
+
 
   static const String offer1 = "assets/images/offer1.png";
   static const String offer2 = "assets/images/offer2.png";
@@ -36,6 +41,7 @@ class Assets {
   static const String messengerLogo = "assets/icons/messengerIcon.png";
   static const String twitterLogo = "assets/icons/twitterIcon.png";
   static const String youtubeLogo = "assets/icons/youtubeIcon.png";
+
 
   static const String iconCar = "assets/icons/iconCar4.png";
   static const String iconHandHealth = "assets/icons/iconHandHealth.png";

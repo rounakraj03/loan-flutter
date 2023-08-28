@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/pages/contact_us.dart';
 import 'package:flutter_loan/pages/home.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_theme.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         scaffoldMessengerKey: MessageHandler.scaffoldMessengerKey,
         theme: AppTheme.theme,
         routes: {},
-        home: HomePage(),
+        // home: HomePage(),
+        home: ContactUs(),
       ),
     );
   }

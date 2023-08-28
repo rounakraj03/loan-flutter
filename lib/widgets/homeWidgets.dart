@@ -294,7 +294,7 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                     bottom: 20,
                     right: 20,
                     child: VisibilityDetector(
-                      key: Key('second-widget-home-two'),
+                      key: UniqueKey(),
                       onVisibilityChanged: (info) {
                         if(info.visibleFraction > 0.8){
                           _controller.forward();
@@ -345,7 +345,7 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                 bottom: 50,
                   left: 0,
                   child: VisibilityDetector(
-                    key: Key('second-widget-home'),
+                    key: UniqueKey(),
                     onVisibilityChanged: (info) {
                       if(info.visibleFraction > 0.8){
                         _controller.forward();
