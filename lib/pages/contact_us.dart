@@ -3,6 +3,7 @@ import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/widgets/contactUsWidgets.dart';
+import 'package:flutter_loan/widgets/footer.dart';
 import 'package:flutter_loan/widgets/navbar.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // return MapSample();
     return Scaffold(
       // backgroundColor: Color(0xfff8f8f8),
       backgroundColor: Colors.white,
@@ -49,7 +51,8 @@ class _ContactUsState extends State<ContactUs> {
                           SizedBox(width: 20,),
                           ContactUsWidgetTwo(),
                         ],
-                      )
+                      ),
+                      Footer()
                     ],
                   ),
                 ),

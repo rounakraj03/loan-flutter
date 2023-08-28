@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/res/validator.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 class ContactUsWidgetOne extends StatelessWidget {
@@ -25,7 +29,7 @@ class ContactUsWidgetOne extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("COME VISIT US AT", style: TextStyle(color: Color(0xff666666), fontSize: 14, letterSpacing: 1, wordSpacing: 1),),
+                      Text("COME VISIT US AT", style: TextStyle(color: Color(0xff666666), fontSize: 14, letterSpacing: 1, wordSpacing: 1, fontWeight: FontWeight.w500),),
                       SizedBox(height: 6,),
                       RichText(text: TextSpan(
                           style: GoogleFonts.poppins(wordSpacing: 1, letterSpacing: 1, fontSize: 38),
@@ -131,7 +135,7 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("SEND MESSAGE", style: TextStyle(color: Color(0xff666666), fontSize: 14, letterSpacing: 1, wordSpacing: 1),),
+                        Text("SEND MESSAGE", style: TextStyle(color: Color(0xff666666), fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1, wordSpacing: 1),),
                         SizedBox(height: 0,),
                         RichText(text: TextSpan(
                             style: GoogleFonts.poppins(wordSpacing: 1, letterSpacing: 1, fontSize: 38),
@@ -144,6 +148,7 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
                       ],
                     ),
                   ),
+                  (width > Constants.desktop_view) ?
                  Row(
                    children: [
                      Flexible(
@@ -166,8 +171,25 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
                        ),
                      ),
                    ],
-                 ),
+                 ) : Column(
+                    children: [
+                      FtTextField(
+                        controller: nameController,
+                        hint: "Your Name",
+                        inputType: TextInputType.name,
+                        validatorType: ValidatorType.validateName,
+                      ),
+                      SizedBox(height: 25,),
+                      FtTextField(
+                        controller: phoneController,
+                        hint: "Your Phone",
+                        inputType: TextInputType.number,
+                        validatorType: ValidatorType.validateMobile,
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 25,),
+                  (width > Constants.desktop_view) ?
                   Row(
                    children: [
                      Flexible(
@@ -190,7 +212,23 @@ class _ContactUsWidgetTwoState extends State<ContactUsWidgetTwo> {
                        ),
                      ),
                    ],
-                 ),
+                 ) : Column(
+                    children: [
+                      FtTextField(
+                        controller: emailController,
+                        hint: "Your Email",
+                        inputType: TextInputType.emailAddress,
+                        validatorType: ValidatorType.validateEmail,
+                      ),
+                      SizedBox(height: 25,),
+                      FtTextField(
+                        controller: websiteController,
+                        hint: "Website URL",
+                        inputType: TextInputType.text,
+                        // validatorType: ValidatorType.validateNotNull,
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 25,),
                   FtTextField(
                     controller: messageController,
@@ -277,3 +315,51 @@ class FtTextField extends StatelessWidget {
     );
   }
 }
+
+
+class MapSample extends StatefulWidget {
+  const MapSample({super.key});
+
+  @override
+  State<MapSample> createState() => MapSampleState();
+}
+
+class MapSampleState extends State<MapSample> {
+  final Completer<GoogleMapController> _controller =
+  Completer<GoogleMapController>();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static const CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GoogleMap(
+        mapType: MapType.hybrid,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _goToTheLake,
+        label: const Text('To the lake!'),
+        icon: const Icon(Icons.directions_boat),
+      ),
+    );
+  }
+
+  Future<void> _goToTheLake() async {
+    final GoogleMapController controller = await _controller.future;
+    await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  }
+}
+
