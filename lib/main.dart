@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/pages/apply_now.dart';
 import 'package:flutter_loan/pages/contact_us.dart';
 import 'package:flutter_loan/pages/home.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
@@ -28,13 +29,14 @@ class MyApp extends StatelessWidget {
         routes: {
           '': (context) => HomePage(),
           '/home' : (context) => HomePage(),
-          '/contact': (context) => ContactUs()
+          '/contact': (context) => ContactUs(),
+          '/apply-now': (context) => ApplyNow(),
         },
-        initialRoute: '/home',
-        onUnknownRoute: (settings) {
-          return MaterialPageRoute(builder: (context) => HomePage());
-        },
-        home: HomePage(),
+        // initialRoute: '/home',
+        // onUnknownRoute: (settings) {
+        //   return MaterialPageRoute(builder: (context) => HomePage());
+        // },
+        home: ApplyNow(),
         // home: ContactUs(),
       ),
     );

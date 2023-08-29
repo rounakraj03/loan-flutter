@@ -16,14 +16,15 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  final buttonColor = Colors.deepPurple;
+  final buttonColor = Colors.redAccent;
 
-  final secondaryBackgroundColor = Colors.orange;
+  final secondaryBackgroundColor = Color(0xffececec);
+  final cursorColor = Color(0xff6666666);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: buttonColor,
+      cursorColor: cursorColor,
       controller: widget.controller,
       inputFormatters: widget.textInputFormatter,
       decoration: InputDecoration(
@@ -35,14 +36,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
               color: buttonColor,
               width: 2
           ),
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(0)
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
               color: secondaryBackgroundColor,
               width: 2
           ),
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(0)
         ),
       ),
       validator: (String? value) {
