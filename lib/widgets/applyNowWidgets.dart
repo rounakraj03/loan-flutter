@@ -345,6 +345,24 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                   children: [
                     CustomElevatedButton(child: "APPLY NOW", onPressed: (){}, width: 180, height: 60,),
                   ],
+                ),
+
+                CustomDropdown(
+                  // hint: "Select an option",
+                  items: [
+                    DropdownMenuItem(
+                      child: Text("Option 1"),
+                      value: "Option 1",
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Option 2"),
+                      value: "Option 2",
+                    ),
+                    // Add more items here
+                  ],
+                  onChanged: (String? value) {
+                    print("Selected value: $value");
+                  },
                 )
 
 

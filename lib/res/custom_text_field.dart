@@ -116,3 +116,64 @@ class _CustomTextField2State extends State<CustomTextField2> {
     );
   }
 }
+
+
+
+class CustomDropdown extends StatefulWidget {
+  // final String? hint;
+  final List<DropdownMenuItem<String>> items;
+  final ValueChanged<String?>? onChanged;
+  final ValidatorType? validatorType;
+  // const CustomDropdown({this.hint, required this.items, this.onChanged, this.validatorType, super.key});
+  const CustomDropdown({required this.items, this.onChanged, this.validatorType, super.key});
+
+  @override
+  State<CustomDropdown> createState() => _CustomDropdownState();
+}
+
+class _CustomDropdownState extends State<CustomDropdown> {
+  final buttonColor = Colors.redAccent;
+  final secondaryBackgroundColor = Color(0xffececec);
+
+  String? selectedValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Colors.white,
+        textTheme: TextTheme(
+          titleSmall: TextStyle(color: Color(0xff848484)),
+        ),
+      ),
+      child: DropdownButtonFormField<String>(
+        decoration: InputDecoration(
+          suffixIcon: Icon(Icons.keyboard_arrow_down_outlined, color:  Color(0xff848484)),
+          hintStyle: TextStyle(color: Color(0xff848484)),
+          hintText: 'Choose Option',
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: buttonColor, width: 2),
+            borderRadius: BorderRadius.circular(0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: secondaryBackgroundColor,
+                width: 2
+            ),
+            borderRadius: BorderRadius.circular(0),
+          ),
+        ),
+        items: widget.items.map((item) {
+          return DropdownMenuItem<String>(
+            value: item.value,
+            child: Text(
+              item.value!,
+              style: TextStyle(color: Color(0xff848484)),
+            ),
+          );
+        }).toList(),
+        onChanged: widget.onChanged,
+      ),
+    );
+  }
+}
