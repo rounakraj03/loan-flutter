@@ -37,6 +37,8 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
   final lengthOfEmploymentController  = TextEditingController();
   final monthlyIncomeController  = TextEditingController();
 
+  String genderValue = "Male";
+
 
   List<String> purposeOfLoanOptions =  ["Business Loan", "Loan Against Property", "Personal Loan", "Home Loan", "Car Loan", "General Insurance", "Health Insurance"];
   List<String> maritalStatusOptions = ["Married", "Single", "Divorced", "Widowed", "seperated"];
@@ -93,7 +95,45 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                         ))
                     ],
                   ),
-                  //todo add gender radio button
+
+                  SizedBox(height: 30,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Gender", style: textstyle1),
+                      SizedBox(height: 5,),
+                      RadioListTile(
+                        activeColor: Colors.redAccent,
+                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                        contentPadding: EdgeInsets.only(left: 0),
+                        value: "Male",
+                        groupValue: genderValue,
+                        title: Text('Male', style: textstyle1,),
+                        onChanged: (value) {
+                          setState(() {
+                            if(value != null) {
+                              genderValue = value;
+                            }
+                          });
+                        },
+                      ),
+                      RadioListTile(
+                        contentPadding: EdgeInsets.only(left: 0),
+                        activeColor: Colors.redAccent,
+                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                        value: "Female",
+                        groupValue: genderValue,
+                        title: Text('Female', style: textstyle1,),
+                        onChanged: (value) {
+                          setState(() {
+                            if(value != null) {
+                              genderValue = value;
+                            }
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 30,),
                   Row(
                     children: [
@@ -406,10 +446,16 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("workPhoneController => ${workPhoneController.text}");
                           print("lengthOfEmploymentController => ${lengthOfEmploymentController.text}");
                           print("monthlyIncomeController => ${monthlyIncomeController.text}");
+                          print("gender => ${genderValue}");
                         }
                       }, width: 180, height: 60,),
                     ],
                   ),
+
+
+
+
+
                 ],
               ),
             ),
@@ -441,6 +487,45 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                         purposeOfLoanController.text = value;
                       }
                     }),
+                  ),
+
+                  SizedBox(height: 30,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Gender", style: textstyle1),
+                      SizedBox(height: 5,),
+                      RadioListTile(
+                        activeColor: Colors.redAccent,
+                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                        contentPadding: EdgeInsets.only(left: 0),
+                        value: "Male",
+                        groupValue: genderValue,
+                        title: Text('Male', style: textstyle1,),
+                        onChanged: (value) {
+                          setState(() {
+                            if(value != null) {
+                              genderValue = value;
+                            }
+                          });
+                        },
+                      ),
+                      RadioListTile(
+                        contentPadding: EdgeInsets.only(left: 0),
+                        activeColor: Colors.redAccent,
+                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                        value: "Female",
+                        groupValue: genderValue,
+                        title: Text('Female', style: textstyle1,),
+                        onChanged: (value) {
+                          setState(() {
+                            if(value != null) {
+                              genderValue = value;
+                            }
+                          });
+                        },
+                      ),
+                    ],
                   ),
 
                   SizedBox(height: 30,),
@@ -627,6 +712,7 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("workPhoneController => ${workPhoneController.text}");
                           print("lengthOfEmploymentController => ${lengthOfEmploymentController.text}");
                           print("monthlyIncomeController => ${monthlyIncomeController.text}");
+                          print("gender => ${genderValue}");
                         }
                       }, width: 180, height: 60,),
                     ],
