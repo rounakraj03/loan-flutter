@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/pages/apply_now.dart';
 import 'package:flutter_loan/pages/contact_us.dart';
+import 'package:flutter_loan/pages/faq.dart';
 import 'package:flutter_loan/pages/home.dart';
 import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_theme.dart';
@@ -31,12 +32,13 @@ class MyApp extends StatelessWidget {
           '/home' : (context) => HomePage(),
           '/contact': (context) => ContactUs(),
           '/apply-now': (context) => ApplyNow(),
+          '/faq': (context) => FaqPage()
         },
         // initialRoute: '/home',
         // onUnknownRoute: (settings) {
         //   return MaterialPageRoute(builder: (context) => HomePage());
         // },
-        home: ApplyNow(),
+        home: FaqPage(),
         // home: ContactUs(),
       ),
     );

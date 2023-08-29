@@ -41,6 +41,8 @@ class Assets {
   static const String messengerLogo = "assets/icons/messengerIcon.png";
   static const String twitterLogo = "assets/icons/twitterIcon.png";
   static const String youtubeLogo = "assets/icons/youtubeIcon.png";
+  static const String minusLogo = "assets/icons/minus.png";
+  static const String plusLogo = "assets/icons/plus.png";
 
 
   static const String iconCar = "assets/icons/iconCar4.png";
