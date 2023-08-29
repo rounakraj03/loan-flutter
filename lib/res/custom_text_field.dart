@@ -27,6 +27,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       cursorColor: cursorColor,
       controller: widget.controller,
       inputFormatters: widget.textInputFormatter,
+      style: TextStyle(color:  Color(0xff6666666)),
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.black38),
         prefixIcon: widget.prefixIcon,
@@ -58,6 +59,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             return validator.validateMobile(value);
           case ValidatorType.validateEmail:
             return validator.validateEmail(value);
+          case ValidatorType.validateNotNull:
+            return validator.validateIsNotEmptyOrNull("This field",value);
           default:
             return null;
         }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/custom_text_field.dart';
+import 'package:flutter_loan/res/validator.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
 
 class ApplyNowForm extends StatefulWidget {
@@ -37,6 +38,12 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
   final monthlyIncomeController  = TextEditingController();
 
 
+  List<String> purposeOfLoanOptions =  ["Business Loan", "Loan Against Property", "Personal Loan", "Home Loan", "Car Loan", "General Insurance", "Health Insurance"];
+  List<String> maritalStatusOptions = ["Married", "Single", "Divorced", "Widowed", "seperated"];
+  List<String> numberOfDependantsOptions = ["0 Dependants", "1 Dependants", "2 Dependants", "3 Dependants", "4 Dependants", "5 Dependants", "5+ Dependants"];
+  List<String> employmentStatusOptions = ['Full Time Employed', 'Full Time Employed', 'Part Time Employed', 'Self Employed', 'Student', 'Pension', 'Disability', 'unemployed'];
+
+  final applyUsFormKey = GlobalKey<FormState>();
 
 
   @override
@@ -47,327 +54,364 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
         if(width > Constants.desktop_view){
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 150, vertical: 80),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Loan Amount (₹)", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:loanAmountController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Purpose of Loan", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:purposeOfLoanController,),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                //todo add gender radio button
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("First Name", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:firstNameController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Last Name", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:lastNameController,),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Email", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:emailController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Mobile Phone", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:phoneController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
+            child: Form(
+              key: applyUsFormKey,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Flexible(
                         flex: 1,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Date of Birth", style: textstyle1),
+                            Text("Loan Amount (₹)", style: textstyle1),
                             SizedBox(height: 5,),
-                            CustomTextField(controller:dobController,),
+                            CustomTextField(controller:loanAmountController, validatorType: ValidatorType.validateNotNull),
                           ],
-                        ),),
-                  ],
-                ),
+                        ),
+                      ),
+                      SizedBox(width: 30,),
+                      Flexible(child:
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Purpose of Loan", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomDropdown(
+                              items: purposeOfLoanOptions.map((e) => DropdownMenuItem(
+                                value: e.toString(),
+                                child: Text(e.toString()),
+                              )).toList(),
+                              onChanged: (value) => setState(() {
+                                if(value != null) {
+                                  purposeOfLoanController.text = value;
+                                }
+                              }),
+                            ),
+                          ],
+                        ))
+                    ],
+                  ),
+                  //todo add gender radio button
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("First Name", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:firstNameController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Last Name", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:lastNameController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Email", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:emailController, validatorType: ValidatorType.validateEmail),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Mobile Phone", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:phoneController, validatorType: ValidatorType.validateMobile),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                          flex: 1,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Date of Birth", style: textstyle1),
+                              SizedBox(height: 5,),
+                              CustomTextField(controller:dobController, validatorType: ValidatorType.validateNotNull),
+                            ],
+                          ),),
+                    ],
+                  ),
 
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Marital Status", style: textstyle1),
                           SizedBox(height: 5,),
-                          CustomTextField(controller:maritalStatusController,),
+                          CustomDropdown(
+                            items: maritalStatusOptions.map((e) => DropdownMenuItem(
+                              value: e.toString(),
+                              child: Text(e.toString()),
+                            )).toList(),
+                            onChanged: (value) => setState(() {
+                              if(value != null) {
+                                maritalStatusController.text = value;
+                              }
+                            }),
+                          ),
                         ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
+                      )),
+                      SizedBox(width: 30,),
+                      Flexible(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Number of Dependants", style: textstyle1),
                           SizedBox(height: 5,),
-                          CustomTextField(controller:numberOfDependantsController,),
+                          CustomDropdown(
+                            items: numberOfDependantsOptions.map((e) => DropdownMenuItem(
+                              value: e.toString(),
+                              child: Text(e.toString()),
+                            )).toList(),
+                            onChanged: (value) => setState(() {
+                              if(value != null) {
+                                numberOfDependantsController.text = value;
+                              }
+                            }),
+                          ),
                         ],
+                      )),
+                    ],
+                  ),
+
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Country", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:countryController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    )
-                  ],
-                ),
-
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Country", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:countryController,),
-                        ],
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Town/City", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:cityController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Town/City", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:cityController,),
-                        ],
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Street", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:streetController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),),
+                    ],
+                  ),
+
+
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("House Name/Number", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:houseNumberController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Street", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:streetController,),
-                        ],
-                      ),),
-                  ],
-                ),
-
-
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("House Name/Number", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:houseNumberController,),
-                        ],
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Home Owner Status", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:homeOwnerController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Home Owner Status", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:homeOwnerController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Time at Address", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:timeAtAddressController,),
-                        ],
-                      ),),
-                  ],
-                ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Time at Address", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:timeAtAddressController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),),
+                    ],
+                  ),
 
 
 
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Employment Status", style: textstyle1),
                           SizedBox(height: 5,),
-                          CustomTextField(controller:employmentStatusController,),
+                          CustomDropdown(
+                            items: employmentStatusOptions.map((e) => DropdownMenuItem(
+                              value: e.toString(),
+                              child: Text(e.toString()),
+                            )).toList(),
+                            onChanged: (value) => setState(() {
+                              if(value != null) {
+                                employmentStatusController.text = value;
+                              }
+                            }),
+                          ),
                         ],
+                      )),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Employment Industry", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:employmentIndustryController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Employment Industry", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:employmentIndustryController,),
-                        ],
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Employer Name", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:employerNameController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),),
+                    ],
+                  ),
+
+
+
+                  SizedBox(height: 30,),
+                  Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Work Phone Number", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:workPhoneController, validatorType: ValidatorType.validateMobile),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Employer Name", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:employerNameController,),
-                        ],
-                      ),),
-                  ],
-                ),
-
-
-
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Work Phone Number", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:workPhoneController,),
-                        ],
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Length of Employment", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:lengthOfEmploymentController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Length of Employment", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:lengthOfEmploymentController,),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 30,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Monthly Income(₹)", style: textstyle1),
-                          SizedBox(height: 5,),
-                          CustomTextField(controller:monthlyIncomeController,),
-                        ],
-                      ),),
-                  ],
-                ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Monthly Income(₹)", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:monthlyIncomeController, validatorType: ValidatorType.validateNotNull),
+                          ],
+                        ),),
+                    ],
+                  ),
 
-                SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CustomElevatedButton(child: "APPLY NOW", onPressed: (){}, width: 180, height: 60,),
-                  ],
-                ),
-
-                CustomDropdown(
-                  // hint: "Select an option",
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("Option 1"),
-                      value: "Option 1",
-                    ),
-                    DropdownMenuItem(
-                      child: Text("Option 2"),
-                      value: "Option 2",
-                    ),
-                    // Add more items here
-                  ],
-                  onChanged: (String? value) {
-                    print("Selected value: $value");
-                  },
-                )
-
-
-
-              ],
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CustomElevatedButton(child: "APPLY NOW", onPressed: (){
+                        if(applyUsFormKey.currentState!.validate()){
+                          print("FORM VALIDATED");
+                          print("loanAmountController => ${loanAmountController.text}");
+                          print("purposeOfLoanController => ${purposeOfLoanController.text}");
+                          print("genderController => ${genderController.text}");
+                          print("firstNameController => ${firstNameController.text}");
+                          print("lastNameController => ${lastNameController.text}");
+                          print("emailController => ${emailController.text}");
+                          print("phoneController => ${phoneController.text}");
+                          print(" dobController => ${dobController.text}");
+                          print("maritalStatusController => ${maritalStatusController.text}");
+                          print("numberOfDependantsController => ${numberOfDependantsController.text}");
+                          print("countryController  => ${countryController.text}");
+                          print("cityController => ${cityController.text}");
+                          print("streetController => ${streetController.text}");
+                          print("houseNumberController => ${houseNumberController.text}");
+                          print("homeOwnerController => ${homeOwnerController.text}");
+                          print("timeAtAddressController => ${timeAtAddressController.text}");
+                          print("employmentStatusController => ${employmentStatusController.text}");
+                          print("employmentIndustryController => ${employmentIndustryController.text}");
+                          print("employerNameController => ${employerNameController.text}");
+                          print("workPhoneController => ${workPhoneController.text}");
+                          print("lengthOfEmploymentController => ${lengthOfEmploymentController.text}");
+                          print("monthlyIncomeController => ${monthlyIncomeController.text}");
+                        }
+                      }, width: 180, height: 60,),
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         }
