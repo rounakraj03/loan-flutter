@@ -307,7 +307,7 @@ class FtTextField extends StatelessWidget {
           case ValidatorType.validateEmail:
             return validator.validateEmail(value);
           case ValidatorType.validateNotNull:
-            return validator.validateIsNotEmptyOrNull("The field is required.", value);
+            return validator.validateIsNotEmptyOrNull("This field", value);
           default:
             return null;
         }
