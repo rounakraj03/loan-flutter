@@ -96,7 +96,7 @@ class _FaqContainerState extends State<FaqContainer> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(widget.question,style: unselectedTextStyle,),
+                    Expanded(child: Text(widget.question,style: unselectedTextStyle,)),
                     SizedBox(height: 15,width: 15, child: unselectedChild,)
                   ]
               ),
@@ -119,7 +119,7 @@ class _FaqContainerState extends State<FaqContainer> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(widget.answer,style: selectedTextStyle,),
+                    Expanded(child: Text(widget.answer,style: selectedTextStyle,)),
                     SizedBox(height: 15,width: 15, child: selectedChild,)
                   ]
               ),
