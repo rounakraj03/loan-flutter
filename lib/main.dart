@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/pages/about_loan.dart';
 import 'package:flutter_loan/pages/apply_now.dart';
 import 'package:flutter_loan/pages/contact_us.dart';
 import 'package:flutter_loan/pages/faq.dart';
@@ -32,13 +33,14 @@ class MyApp extends StatelessWidget {
           '/home' : (context) => HomePage(),
           '/contact': (context) => ContactUs(),
           '/apply-now': (context) => ApplyNow(),
-          '/faq': (context) => FaqPage()
+          '/faq': (context) => FaqPage(),
+          '/about-loan': (context) => AboutLoanPage()
         },
         // initialRoute: '/home',
         // onUnknownRoute: (settings) {
         //   return MaterialPageRoute(builder: (context) => HomePage());
         // },
-        home: FaqPage(),
+        home: AboutLoanPage(),
         // home: ContactUs(),
       ),
     );
