@@ -27,6 +27,16 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
 
   final aboutLoanFormKey = GlobalKey<FormState>();
 
+  final scrollController = ScrollController();
+
+
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +50,7 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
               NavBarWidget(),
               Expanded(
                 child: SingleChildScrollView(
+                  controller: scrollController,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -66,112 +77,262 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
                       ),
                       SizedBox(height: 30,),
 
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: size.width/10),
-                      child: Row(
-                        children: [
-                          Flexible(
-                            flex: 2,
-                            child: Column(
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        if(size.width > 1000) {
+                          return Container(
+                            padding: EdgeInsets.symmetric(horizontal: size.width/10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  color: Colors.grey.shade100,
-                                  child: Container(
-                                    color: Colors.white,
-                                    child: Column(
-                                      children: List.generate(AboutLoanData.aboutLoanData.length, (index) => InkWell(
-                                        onTapDown: (details) => setState(() {selectedIndex = index;}),
-                                        focusColor: Colors.transparent,
-                                        splashColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
+                                Flexible(
+                                  flex: 2,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(10),
+                                        color: Colors.grey.shade100,
                                         child: Container(
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: (selectedIndex == index ) ? [Color(0xfffea060), Color(0xfffd8a61),Color(0xfffb6f62)] : [Colors.white, Colors.white, Colors.white],
-                                            )
+                                          color: Colors.white,
+                                          child: Column(
+                                              children: List.generate(AboutLoanData.aboutLoanData.length, (index) => InkWell(
+                                                onTapDown: (details) => setState(() {selectedIndex = index;}),
+                                                focusColor: Colors.transparent,
+                                                splashColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor: Colors.transparent,
+                                                child: Container(
+                                                    decoration: BoxDecoration(
+                                                        gradient: LinearGradient(
+                                                          colors: (selectedIndex == index ) ? [Color(0xfffea060), Color(0xfffd8a61),Color(0xfffb6f62)] : [Colors.white, Colors.white, Colors.white],
+                                                        )
+                                                    ),
+                                                    margin: EdgeInsets.all(2),
+                                                    padding: EdgeInsets.all(15),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Text(AboutLoanData.aboutLoanData[index][0], style: TextStyle(color: (selectedIndex == index) ? Colors.white : Colors.black, fontWeight: FontWeight.w600),),
+                                                        Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.shade100),child: Icon(Icons.arrow_forward_ios_rounded, color: Colors.black26, size: 15,))
+                                                      ],
+                                                    ) ),
+                                              ))
                                           ),
-                                          margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(15),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(AboutLoanData.aboutLoanData[index][0], style: TextStyle(color: (selectedIndex == index) ? Colors.white : Colors.black, fontWeight: FontWeight.w600),),
-                                                Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.shade100),child: Icon(Icons.arrow_forward_ios_rounded, color: Colors.black26, size: 15,))
-                                              ],
-                                            ) ),
-                                      ))
-                                    ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 30,),
+                                      Container(
+                                          padding: EdgeInsets.all(10),
+                                          color: Colors.grey.shade100,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                                                  color: Colors.white,
+                                                  child: Form(
+                                                    key: aboutLoanFormKey,
+                                                    child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children:[
+                                                          Text("Book An Appointment", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 22, wordSpacing: 1),),
+                                                          UnderLineWidget(),
+
+                                                          SizedBox(height: 10,),
+                                                          FtTextField(
+                                                            controller: nameController,
+                                                            hint: "Your Name",
+                                                            inputType: TextInputType.name,
+                                                            validatorType: ValidatorType.validateNotNull,
+                                                          ),
+                                                          SizedBox(height: 5,),
+                                                          FtTextField(
+                                                            controller: phoneController,
+                                                            hint: "Your Phone",
+                                                            inputType: TextInputType.number,
+                                                            validatorType: ValidatorType.validateNotNull,
+                                                          ),
+                                                          SizedBox(height: 5,),
+                                                          FtTextField(
+                                                            controller: emailController,
+                                                            hint: "Your Email",
+                                                            inputType: TextInputType.emailAddress,
+                                                            validatorType: ValidatorType.validateEmail,
+                                                          ),
+
+                                                        ]
+                                                    ),
+                                                  )
+                                              ),
+                                              SizedBox(height: 20,),
+                                              CustomElevatedButton(
+                                                child: "SEND MESSAGE",
+                                                onPressed: () {
+                                                  if(aboutLoanFormKey.currentState!.validate()){}
+                                                }, width: 150, )
+                                            ],
+                                          )
+                                      )
+
+                                    ],
                                   ),
                                 ),
-                                SizedBox(height: 30,),
-                                Container(
-                                    padding: EdgeInsets.all(10),
-                                    color: Colors.grey.shade100,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                                            color: Colors.white,
-                                            child: Form(
-                                              key: aboutLoanFormKey,
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children:[
-                                                    Text("Book An Appointment", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 22, wordSpacing: 1),),
-                                                    UnderLineWidget(),
-
-                                                    SizedBox(height: 10,),
-                                                    FtTextField(
-                                                      controller: nameController,
-                                                      hint: "Your Name",
-                                                      inputType: TextInputType.name,
-                                                      validatorType: ValidatorType.validateNotNull,
-                                                    ),
-                                                    SizedBox(height: 5,),
-                                                    FtTextField(
-                                                      controller: phoneController,
-                                                      hint: "Your Phone",
-                                                      inputType: TextInputType.number,
-                                                      validatorType: ValidatorType.validateNotNull,
-                                                    ),
-                                                    SizedBox(height: 5,),
-                                                    FtTextField(
-                                                      controller: emailController,
-                                                      hint: "Your Email",
-                                                      inputType: TextInputType.emailAddress,
-                                                      validatorType: ValidatorType.validateEmail,
-                                                    ),
-
-                                                  ]
-                                              ),
-                                            )
-                                        ),
-                                        SizedBox(height: 20,),
-                                        CustomElevatedButton(
-                                          child: "SEND MESSAGE",
-                                          onPressed: () {
-                                            if(aboutLoanFormKey.currentState!.validate()){}
-                                        }, width: 150, )
-                                      ],
-                                    )
+                                SizedBox(width: 80,),
+                                Flexible(
+                                  flex: 5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        // alignment: Alignment.topCenter,
+                                          color: Colors.white,
+                                          height: 500,
+                                          width: 1000,
+                                          // width: double.maxFinite,
+                                          child: Image.asset(AboutLoanData.aboutLoanData[selectedIndex][1], fit: BoxFit.cover,)),
+                                      SizedBox(height: 30,),
+                                      Text(AboutLoanData.aboutLoanData[selectedIndex][0], style: GoogleFonts.poppins(color: Color(0xff222222), fontWeight: FontWeight.bold, fontSize: 32),),
+                                      SizedBox(height: 10,),
+                                      Text(AboutLoanData.aboutLoanData[selectedIndex][2], style: GoogleFonts.poppins(color: Color(0xff666666), fontSize: 15),)
+                                    ],
+                                  ),
                                 )
+
 
                               ],
                             ),
-                          ),
-                          Flexible(
-                            flex: 5,
+                          );
+                        }
+                        else {
+                          return Container(
+                            padding: EdgeInsets.symmetric(horizontal: size.width/10),
                             child: Column(
-                              children: [],
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      // alignment: Alignment.topCenter,
+                                        color: Colors.white,
+                                        height: 300,
+                                        width: 1000,
+                                        // width: double.maxFinite,
+                                        child: Image.asset(AboutLoanData.aboutLoanData[selectedIndex][1], fit: BoxFit.cover,)),
+                                    SizedBox(height: 30,),
+                                    Text(AboutLoanData.aboutLoanData[selectedIndex][0], style: GoogleFonts.poppins(color: Color(0xff222222), fontWeight: FontWeight.bold, fontSize: 32),),
+                                    SizedBox(height: 10,),
+                                    Text(AboutLoanData.aboutLoanData[selectedIndex][2], style: GoogleFonts.poppins(color: Color(0xff666666), fontSize: 15),)
+                                  ],
+                                ),
+                              SizedBox(height: 50,),
+                              Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    color: Colors.grey.shade100,
+                                    child: Container(
+                                      color: Colors.white,
+                                      child: Column(
+                                          children: List.generate(AboutLoanData.aboutLoanData.length, (index) => InkWell(
+                                            onTapDown: (details) => setState(() {
+                                              selectedIndex = index;
+                                              double positionToScrollTo = size.height -100;
+                                              scrollController.animateTo(
+                                                positionToScrollTo,
+                                                duration: Duration(milliseconds: 300),
+                                                curve: Curves.ease,
+                                              );
+                                            }),
+                                            focusColor: Colors.transparent,
+                                            splashColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    gradient: LinearGradient(
+                                                      colors: (selectedIndex == index ) ? [Color(0xfffea060), Color(0xfffd8a61),Color(0xfffb6f62)] : [Colors.white, Colors.white, Colors.white],
+                                                    )
+                                                ),
+                                                margin: EdgeInsets.all(2),
+                                                padding: EdgeInsets.all(15),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Text(AboutLoanData.aboutLoanData[index][0], style: TextStyle(color: (selectedIndex == index) ? Colors.white : Colors.black, fontWeight: FontWeight.w600),),
+                                                    Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.shade100),child: Icon(Icons.arrow_forward_ios_rounded, color: Colors.black26, size: 15,))
+                                                  ],
+                                                ) ),
+                                          ))
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 30,),
+                                  Container(
+                                      padding: EdgeInsets.all(10),
+                                      color: Colors.grey.shade100,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                                              color: Colors.white,
+                                              child: Form(
+                                                key: aboutLoanFormKey,
+                                                child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children:[
+                                                      Text("Book An Appointment", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 22, wordSpacing: 1),),
+                                                      UnderLineWidget(),
+
+                                                      SizedBox(height: 10,),
+                                                      FtTextField(
+                                                        controller: nameController,
+                                                        hint: "Your Name",
+                                                        inputType: TextInputType.name,
+                                                        validatorType: ValidatorType.validateNotNull,
+                                                      ),
+                                                      SizedBox(height: 5,),
+                                                      FtTextField(
+                                                        controller: phoneController,
+                                                        hint: "Your Phone",
+                                                        inputType: TextInputType.number,
+                                                        validatorType: ValidatorType.validateNotNull,
+                                                      ),
+                                                      SizedBox(height: 5,),
+                                                      FtTextField(
+                                                        controller: emailController,
+                                                        hint: "Your Email",
+                                                        inputType: TextInputType.emailAddress,
+                                                        validatorType: ValidatorType.validateEmail,
+                                                      ),
+
+                                                    ]
+                                                ),
+                                              )
+                                          ),
+                                          SizedBox(height: 20,),
+                                          CustomElevatedButton(
+                                            child: "SEND MESSAGE",
+                                            onPressed: () {
+                                              if(aboutLoanFormKey.currentState!.validate()){}
+                                            }, width: 150, )
+                                        ],
+                                      )
+                                  )
+
+                                ],
+                              )
+
+
+                              ],
                             ),
-                          )
+                          );
+                        }
 
-
-                        ],
-                      ),
+                      }
                     ),
                       SizedBox(height: 30,),
                       Footer()

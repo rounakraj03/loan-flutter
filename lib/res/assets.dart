@@ -58,4 +58,14 @@ class Assets {
   static const String iconProperty = "assets/icons/iconProperty.png";
   static const String iconSuitcase = "assets/icons/iconSuitcase.png";
 
+
+
+  static const String businessLoan = "assets/loanImages/businessLoan.jpg";
+  static const String businessManMoney = "assets/loanImages/businessManMoney.jpg";
+  static const String carLoan = "assets/loanImages/carLoan.jpg";
+  static const String generalInsurance = "assets/loanImages/generalInsurance.jpg";
+  static const String healthInsurance = "assets/loanImages/healthInsurance.jpg";
+  static const String homeLoan = "assets/loanImages/homeLoan.jpg";
+  static const String loanAgainstProperty = "assets/loanImages/loanAgainstProperty.jpg";
+  static const String personalLoan = "assets/loanImages/personalLoan.jpg";
 }
