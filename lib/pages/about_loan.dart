@@ -12,7 +12,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AboutLoanPage extends StatefulWidget {
-  const AboutLoanPage({super.key});
+  final int? selectedNumber;
+  const AboutLoanPage({this.selectedNumber, super.key});
 
   @override
   State<AboutLoanPage> createState() => _AboutLoanPageState();
@@ -20,7 +21,7 @@ class AboutLoanPage extends StatefulWidget {
 
 class _AboutLoanPageState extends State<AboutLoanPage> {
 
-  int selectedIndex = 0;
+  late int selectedIndex;
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
@@ -30,6 +31,13 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
   final scrollController = ScrollController();
 
 
+  @override
+  void initState() {
+    setState(() {
+      selectedIndex  = widget.selectedNumber ?? 0;
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {

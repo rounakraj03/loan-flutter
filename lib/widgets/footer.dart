@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class UnderLineWidget extends StatelessWidget {
@@ -44,167 +45,110 @@ class _FooterState extends State<Footer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: 100,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Flexible(flex:1,child: Image.asset(Assets.logo)),
-                              Flexible(flex:1,child: Text("MyPaisaBazaar", style: TextStyle(fontWeight: FontWeight.bold),))
-                            ],
+                      Flexible(
+                        flex: 1,
+                        child: InkWell(
+                            hoverColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTapDown: (details){Navigator.of(context).pushNamed('/home');},
+                            child: Image.asset(Assets.logo)),
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("HOME", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                                UnderLineWidget(),
+
+                                SizedBox(height: 20,),
+                                InkWell(
+                                    hoverColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTapDown: (details){Navigator.of(context).pushNamed('/home');},
+                                    child: Text("> Home", style: TextStyle(color: Colors.white70))
+                                ),
+                                SizedBox(height: 20,),
+                                InkWell(
+                                    hoverColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTapDown: (details){Navigator.of(context).pushNamed('/faq');},
+                                    child: Text("> FAQs", style: TextStyle(color: Colors.white70),)
+                                ),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                          flex:2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("APPLY FOR LOAN", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                                    UnderLineWidget(),
+
+                                    SizedBox(height: 20,),
+                                    InkWell(
+                                        hoverColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        splashColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTapDown: (details){Navigator.of(context).pushNamed('/apply-now');},
+                                        child: Text("> Apply Now", style: TextStyle(color: Colors.white70))
+                                    ),
+                                    SizedBox(height: 20,),
+                                    InkWell(
+                                        hoverColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        splashColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTapDown: (details){Navigator.of(context).pushNamed('/contact');},
+                                        child: Text("> Contact Us", style: TextStyle(color: Colors.white70),)
+                                    ),
+                                  ],
+                                ),
+                            ]
                           ),
-                        ),
                       ),
-                      Expanded(
+                      Flexible(
+                        flex: 2,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("COMPANY", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                                Text("ABOUT LOANS", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
                                 UnderLineWidget(),
 
+                                SizedBox(height: 20,),
+                                InkWell(
+                                    hoverColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTapDown: (details){Navigator.of(context).pushNamed('/about-loan');},
+                                    child: Text("> About Loan", style: TextStyle(color: Colors.white70))
+                                ),
                                 SizedBox(height: 40,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> About Us", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Company", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Privacy Policy", style: TextStyle(color: Colors.white70),)
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Privacy Policy", style: TextStyle(color: Colors.white70),)
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("ABOUT", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
-                                UnderLineWidget(),
-
-                                SizedBox(height: 40,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Business Insurance", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Fund Management", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Stock Custodian", style: TextStyle(color: Colors.white70),)
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Business Management", style: TextStyle(color: Colors.white70),)
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("RESOURCES", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
-                                UnderLineWidget(),
-
-                                SizedBox(height: 40,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Personal Loan", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Home Loan", style: TextStyle(color: Colors.white70))
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Car Loan", style: TextStyle(color: Colors.white70),)
-                                ),
-                                SizedBox(height: 20,),
-                                InkWell(
-                                    hoverColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Business Loan", style: TextStyle(color: Colors.white70,),)
-                                ),
                               ],
                             ),
                           ],
@@ -218,12 +162,12 @@ class _FooterState extends State<Footer> {
                   SizedBox(height: 50,),
 
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(flex: 1, child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Expanded(child: Text("Copyright © 2019 All Rights Reserved.", style: TextStyle(color: Colors.white70),)),
+                          Expanded(child: Text("Copyright © 2023 All Rights Reserved.", style: TextStyle(color: Colors.white70),)),
                         ],
                       )),
 
@@ -244,8 +188,8 @@ class _FooterState extends State<Footer> {
                                     focusColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> Work With us", style: TextStyle(color: Colors.white70))
+                                    onTapDown: (details){launchUrl(Uri.parse("tel:+919899337767"));},
+                                    child: Text("> +91 98993 37767", style: TextStyle(color: Colors.white70))
                                 ),
                                 SizedBox(height: 15,),
                                 InkWell(
@@ -253,8 +197,8 @@ class _FooterState extends State<Footer> {
                                     focusColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTapDown: (details){},
-                                    child: Text("> needhelp@mentry.com", style: TextStyle(color: Colors.white70))
+                                    onTapDown: (details){launchUrl(Uri.parse("mailto:mypaisahub@gmail.com"));},
+                                    child: Text("> mypaisahub@gmail.com", style: TextStyle(color: Colors.white70))
                                 ),
                               ],
                             ),
@@ -292,7 +236,7 @@ class _FooterState extends State<Footer> {
                                         ),
                                         height: 50,
                                         width: 50,
-                                        padding: EdgeInsets.all(5),
+                                        padding: EdgeInsets.all(10),
                                         child: Image.asset(Assets.facebookLogo, color: Colors.white,),
                                       ),
                                     ),
@@ -369,7 +313,7 @@ class _FooterState extends State<Footer> {
          return Container(
            color: Color(0xFF323232),
            child: Padding(
-             padding: const EdgeInsets.symmetric(horizontal: 20.0),
+             padding: const EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
              child: Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
@@ -379,22 +323,22 @@ class _FooterState extends State<Footer> {
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
                        Flexible(flex:1,child: Image.asset(Assets.logo)),
-                       Flexible(flex:1,child: Text("MyPaisaBazaar", style: TextStyle(fontWeight: FontWeight.bold),))
+                      //  Flexible(flex:1,child: Text("MyPaisaBazaar", style: TextStyle(fontWeight: FontWeight.bold),))
                      ],
                    ),
                  ),
                  SizedBox(height: 50,),
-                 Text("COMPANY", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                 Text("HOME", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
                  UnderLineWidget(),
 
-                 SizedBox(height: 40,),
+                 SizedBox(height: 30,),
                  InkWell(
                    hoverColor: Colors.transparent,
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> About Us", style: TextStyle(color: Colors.white70))
+                     onTapDown: (details){Navigator.of(context).pushNamed('/home');},
+                     child: Text("> Home", style: TextStyle(color: Colors.white70))
                  ),
                  SizedBox(height: 20,),
                  InkWell(
@@ -402,72 +346,23 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Company", style: TextStyle(color: Colors.white70))
-                 ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Privacy Policy", style: TextStyle(color: Colors.white70),)
-                 ),
-                 SizedBox(height: 50,),
-                 Text("ABOUT", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
-                 UnderLineWidget(),
-
-                 SizedBox(height: 40,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Business Insurance", style: TextStyle(color: Colors.white70))
-                 ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Fund Management", style: TextStyle(color: Colors.white70))
-                 ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Stock Custodian", style: TextStyle(color: Colors.white70),)
-                 ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Business Management", style: TextStyle(color: Colors.white70),)
+                     onTapDown: (details){Navigator.of(context).pushNamed('/faq');},
+                     child: Text("> FAQs", style: TextStyle(color: Colors.white70),)
                  ),
 
 
                  SizedBox(height: 50,),
-                 Text("RESOURCES", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                 Text("APPLY FOR LOAN", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
                  UnderLineWidget(),
 
-                 SizedBox(height: 40,),
+                 SizedBox(height: 30,),
                  InkWell(
                    hoverColor: Colors.transparent,
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Personal Loan", style: TextStyle(color: Colors.white70))
+                     onTapDown: (details){Navigator.of(context).pushNamed('/apply-now');},
+                     child: Text("> Apply Now", style: TextStyle(color: Colors.white70))
                  ),
                  SizedBox(height: 20,),
                  InkWell(
@@ -475,33 +370,29 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Home Loan", style: TextStyle(color: Colors.white70))
+                     onTapDown: (details){Navigator.of(context).pushNamed('/contact');},
+                     child: Text("> Contact Us", style: TextStyle(color: Colors.white70),)
                  ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Car Loan", style: TextStyle(color: Colors.white70),)
-                 ),
-                 SizedBox(height: 20,),
-                 InkWell(
-                   hoverColor: Colors.transparent,
-                     focusColor: Colors.transparent,
-                     splashColor: Colors.transparent,
-                     highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Business Loan", style: TextStyle(color: Colors.white70),)
-                 ),
+               
+                 SizedBox(height: 50,),
+                 Text("ABOUT LOANS", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
+                 UnderLineWidget(),
 
+                 SizedBox(height: 30,),
+                 InkWell(
+                   hoverColor: Colors.transparent,
+                     focusColor: Colors.transparent,
+                     splashColor: Colors.transparent,
+                     highlightColor: Colors.transparent,
+                     onTapDown: (details){Navigator.of(context).pushNamed('/about-loan');},
+                     child: Text("> About Loan", style: TextStyle(color: Colors.white70))
+                 ),
+                 
                  SizedBox(height: 30,),
                  Divider(color: Colors.white70,height: 1,),
                  SizedBox(height: 50,),
 
-                 Text("Copyright © 2019 All Rights Reserved.", style: TextStyle(color: Colors.white70),),
+                 Text("Copyright © 2023 All Rights Reserved.", style: TextStyle(color: Colors.white70),),
                  SizedBox(height: 50,),
 
                  Text("CONTACT US", style: TextStyle(fontWeight: FontWeight.bold),selectionColor: Colors.yellow),
@@ -513,8 +404,8 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> Work With us", style: TextStyle(color: Colors.white70))
+                     onTapDown: (details){launchUrl(Uri.parse("tel:+919899337767"));},
+                     child: Text("> +91 98993 37767", style: TextStyle(color: Colors.white70))
                  ),
                  SizedBox(height: 20,),
                  InkWell(
@@ -522,8 +413,8 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){},
-                     child: Text("> needhelp@mentry.com", style: TextStyle(color: Colors.white70))
+                     onTapDown: (details){launchUrl(Uri.parse("mailto:mypaisahub@gmail.com"));},
+                     child: Text("> mypaisahub@gmail.com", style: TextStyle(color: Colors.white70))
                  ),
 
 

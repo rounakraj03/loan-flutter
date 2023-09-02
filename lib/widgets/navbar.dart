@@ -179,46 +179,49 @@ class _MyAppState extends State<NavBarWidget> {
                                       },
                                     ),)
                                   // ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow.shade800),)
-                                  ,onPressed: (){
-                                showDialog(
-                                  context: context,
-                                  barrierColor: Colors.black.withOpacity(0.5),  // This line makes the background fade
-                                  builder: (context) => Dialog(
-                                    backgroundColor: Colors.transparent,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(20),
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                  colors: [
-                                                    Colors.yellow[800]!,
-                                                    Colors.yellow[800]!,
-                                                    Colors.yellow[800]!
-                                                  ]
-                                              )
-                                          ),
-                                          width: (MediaQuery.of(context).size.width < 700) ? MediaQuery.of(context).size.width * 1 : 350,  // This line sets the width
-                                          child: FormPopup(),
-                                        ),
-                                        Positioned(
-                                            right: 0,
-                                            top: 0,
-                                            child: IconButton(
-                                              icon: Icon(Icons.close, color: Colors.black),  // Close button icon
-                                              onPressed: () {
-                                                Navigator.of(context).pop();  // Close the dialog when the button is pressed
-                                              },
-                                            ))
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                  ,
+                                  onPressed: (){
+
+                                    Navigator.of(context).pushNamed('/contact');
+                                // showDialog(
+                                //   context: context,
+                                //   barrierColor: Colors.black.withOpacity(0.5),  // This line makes the background fade
+                                //   builder: (context) => Dialog(
+                                //     backgroundColor: Colors.transparent,
+                                //     shape: RoundedRectangleBorder(
+                                //       borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                //     ),
+                                //     child: Stack(
+                                //       children: [
+                                //         Container(
+                                //           decoration: BoxDecoration(
+                                //               borderRadius: BorderRadius.circular(20),
+                                //               gradient: LinearGradient(
+                                //                   begin: Alignment.topLeft,
+                                //                   end: Alignment.bottomRight,
+                                //                   colors: [
+                                //                     Colors.orange[800]!,
+                                //                     Colors.yellow[800]!,
+                                //                     Colors.yellow[800]!
+                                //                   ]
+                                //               )
+                                //           ),
+                                //           width: (MediaQuery.of(context).size.width < 700) ? MediaQuery.of(context).size.width * 1 : 350,  // This line sets the width
+                                //           child: FormPopup(),
+                                //         ),
+                                //         Positioned(
+                                //             right: 0,
+                                //             top: 0,
+                                //             child: IconButton(
+                                //               icon: Icon(Icons.close, color: Colors.black),  // Close button icon
+                                //               onPressed: () {
+                                //                 Navigator.of(context).pop();  // Close the dialog when the button is pressed
+                                //               },
+                                //             ))
+                                //       ],
+                                //     ),
+                                //   ),
+                                // );
                               },
                                   child: Text("Lets Connect",style: GoogleFonts.poppins(
                                     fontSize: 16.0,

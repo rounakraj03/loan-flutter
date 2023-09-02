@@ -7,6 +7,7 @@ import 'package:flutter_loan/res/validator.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class ContactUsWidgetOne extends StatelessWidget {
@@ -29,21 +30,33 @@ class ContactUsWidgetOne extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("COME VISIT US AT", style: TextStyle(color: Color(0xff666666), fontSize: 14, letterSpacing: 1, wordSpacing: 1, fontWeight: FontWeight.w500),),
+                      Text("CONNECT WITH US AT", style: TextStyle(color: Color(0xff666666), fontSize: 14, letterSpacing: 1, wordSpacing: 1, fontWeight: FontWeight.w500),),
                       SizedBox(height: 6,),
                       RichText(text: TextSpan(
                           style: GoogleFonts.poppins(wordSpacing: 1, letterSpacing: 1, fontSize: 38),
                           children: [
                             TextSpan(text: "OUR ", style: TextStyle(fontWeight: FontWeight.bold)),
-                            TextSpan(text: "ADDRESS"),
+                            TextSpan(text: "CONTACTS"),
                           ]
                       )),
                     ],
                   ),
                 ),
-              GradientCircularContainer(image: Assets.mapsIcon,heading: "Our Address", subHeading: "2851 Southside Lane, Los Angeles, Ca"),
-              GradientCircularContainer(image: Assets.callIcon,heading: "Our Phone Number", subHeading: "+1-323-778-4054"),
-              GradientCircularContainer(image: Assets.mailIcon,heading: "Our Email", subHeading: "mentry@example.com"),
+              // GradientCircularContainer(image: Assets.mapsIcon,heading: "Our Address", subHeading: "2851 Southside Lane, Los Angeles, Ca"),
+              InkWell(
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTapDown: (details){launchUrl(Uri.parse("tel:+919899337767"));},
+                  child: GradientCircularContainer(image: Assets.callIcon,heading: "Our Phone Number", subHeading: "+91 98993 37767")),
+              InkWell(
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTapDown: (details){launchUrl(Uri.parse("mailto:mypaisahub@gmail.com"));},
+                  child: GradientCircularContainer(image: Assets.mailIcon,heading: "Our Email", subHeading: "mypaisahub@gmail.com")),
 
             ],
           ),
