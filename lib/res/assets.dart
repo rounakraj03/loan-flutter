@@ -68,4 +68,23 @@ class Assets {
   static const String homeLoan = "assets/loanImages/homeLoan.jpg";
   static const String loanAgainstProperty = "assets/loanImages/loanAgainstProperty.jpg";
   static const String personalLoan = "assets/loanImages/personalLoan.jpg";
+
+
+  static const String b1 = "assets/bankImages/b1.png";
+  static const String b2 = "assets/bankImages/b2.png";
+  static const String b3 = "assets/bankImages/b3.png";
+  static const String b4 = "assets/bankImages/b4.png";
+  static const String b5 = "assets/bankImages/b5.png";
+  static const String b6 = "assets/bankImages/b6.png";
+  static const String b7 = "assets/bankImages/b7.png";
+  static const String b8 = "assets/bankImages/b8.png";
+  static const String b9 = "assets/bankImages/b9.png";
+  static const String b10 = "assets/bankImages/b10.png";
+  static const String b11 = "assets/bankImages/b11.png";
+  static const String b12 = "assets/bankImages/b12.png";
+  static const String b13 = "assets/bankImages/b13.png";
+  static const String b14 = "assets/bankImages/b14.png";
+  static const String b15 = "assets/bankImages/b15.png";
+  static const String b16 = "assets/bankImages/b16.png";
+
 }

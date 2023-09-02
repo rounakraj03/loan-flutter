@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -1167,6 +1169,68 @@ class CardWidget extends StatelessWidget {
         }
 
       }
+    );
+  }
+}
+
+
+class HomeSixWidget extends StatefulWidget {
+  const HomeSixWidget({super.key});
+
+  @override
+  State<HomeSixWidget> createState() => _HomeSixWidgetState();
+}
+
+class _HomeSixWidgetState extends State<HomeSixWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 250.0, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          RichText(textAlign: TextAlign.center,
+              text: TextSpan(
+                  style: TextStyle(color: Colors.black,fontSize: 40, letterSpacing: 1, wordSpacing: 1),
+                  children: [
+                    TextSpan(text: "Our "),
+                    TextSpan(text: "Partners", style: TextStyle(fontWeight: FontWeight.bold)),
+                  ]
+              )),
+
+          CarouselSlider(
+            options: CarouselOptions(
+              autoPlay: true,
+              autoPlayInterval: Duration(milliseconds: 1500), // Very short interval
+              autoPlayAnimationDuration: Duration(milliseconds: 1500), // Very short duration
+              autoPlayCurve: Curves.linear,
+              scrollDirection: Axis.horizontal,
+              viewportFraction: 0.2, // Adjust based on your needs
+              height: 200
+            ),
+            // items: List.generate(10, (index) => Image.asset(Assets.iconMen))
+
+              items: [
+                Image.asset(Assets.b1),
+                Image.asset(Assets.b2),
+                Image.asset(Assets.b3),
+                Image.asset(Assets.b4),
+                Image.asset(Assets.b5),
+                Image.asset(Assets.b6),
+                Image.asset(Assets.b7),
+                Image.asset(Assets.b8),
+                Image.asset(Assets.b9),
+                Image.asset(Assets.b10),
+                Image.asset(Assets.b11),
+                Image.asset(Assets.b12),
+                Image.asset(Assets.b13),
+                Image.asset(Assets.b14),
+                Image.asset(Assets.b15),
+                Image.asset(Assets.b16),
+              ]
+          ),
+        ],
+      ),
     );
   }
 }
