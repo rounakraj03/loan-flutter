@@ -242,9 +242,9 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                     text: TextSpan(
                         style: TextStyle(color: Colors.white, fontSize: 24, wordSpacing: 2),
                         children: [
-                          TextSpan(text:"People had the opportunity to study in a " ),
-                          TextSpan(text:"prestigious university ", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.normal)),
-                          TextSpan(text:"thanks to our loans"),
+                          TextSpan(text:"Unlocking New Possibilities in Your" ),
+                          TextSpan(text:" Life and Business  ", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.normal)),
+                          TextSpan(text:"with the Right Loan."),
                         ]
                     ),
                   ),
@@ -267,9 +267,9 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                   text: TextSpan(
                       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 24, wordSpacing: 2),
                       children: [
-                        TextSpan(text:"People had the opportunity to study in a " ),
-                        TextSpan(text:"prestigious university ", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.normal)),
-                        TextSpan(text:"thanks to our loans"),
+                        TextSpan(text:"Unlocking New Possibilities in Your " ),
+                        TextSpan(text:" Life and Business ", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.normal)),
+                        TextSpan(text:"with the Right Loan."),
                       ]
                   ),
                 ),

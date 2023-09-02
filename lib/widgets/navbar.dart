@@ -50,9 +50,9 @@ class _MyAppState extends State<NavBarWidget> {
                           print("Home");
                           if (collapsableHeight == 0.0) {
                             setState(() {
-                              collapsableHeight = 240.0;
+                              collapsableHeight = 300.0;
                             });
-                          } else if (collapsableHeight == 240.0) {
+                          } else if (collapsableHeight == 300.0) {
                             setState(() {
                               collapsableHeight = 0.0;
                             });
@@ -63,16 +63,16 @@ class _MyAppState extends State<NavBarWidget> {
                       ),
                       NavBarItem(
                         number: 1,
-                        text: 'Gallery',
+                        text: 'Loans',
                         onTap: () {
-                          print("Gallery");
+                          print("about-loan");
                           Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
-                          Navigator.of(context).pushNamed('/gallery');
+                          Navigator.of(context).pushNamed('/about-loan');
                           if (collapsableHeight == 0.0) {
                             setState(() {
-                              collapsableHeight = 240.0;
+                              collapsableHeight = 300.0;
                             });
-                          } else if (collapsableHeight == 240.0) {
+                          } else if (collapsableHeight == 300.0) {
                             setState(() {
                               collapsableHeight = 0.0;
                             });
@@ -81,19 +81,19 @@ class _MyAppState extends State<NavBarWidget> {
                       ),
                       NavBarItem(
                         number: 2,
-                        text: 'About Us',
+                        text: 'Apply Now',
                         onTap: () {
-                          print("About Us");
+                          print("apply-now");
                           setState(() {
                             Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
-                            Navigator.of(context).pushNamed('/about');
+                            Navigator.of(context).pushNamed('/apply-now');
 
                           });
                           if (collapsableHeight == 0.0) {
                             setState(() {
-                              collapsableHeight = 240.0;
+                              collapsableHeight = 300.0;
                             });
-                          } else if (collapsableHeight == 240.0) {
+                          } else if (collapsableHeight == 300.0) {
                             setState(() {
                               collapsableHeight = 0.0;
                             });
@@ -103,16 +103,38 @@ class _MyAppState extends State<NavBarWidget> {
                       ),
                       NavBarItem(
                         number: 3,
+                        text: 'FAQs',
+                        onTap: () {
+                          print("FAQs");
+                          setState(() {
+                            Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                            Navigator.of(context).pushNamed('/faq');
+
+                          });
+                          if (collapsableHeight == 0.0) {
+                            setState(() {
+                              collapsableHeight = 300.0;
+                            });
+                          } else if (collapsableHeight == 300.0) {
+                            setState(() {
+                              collapsableHeight = 0.0;
+                            });
+                          }
+
+                        },
+                      ),
+                      NavBarItem(
+                        number: 4,
                         text: 'Contact Us',
                         onTap: () {
                           print("Contact Us");
-                          Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                          Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(4);
                           Navigator.of(context).pushNamed('/contact');
                           if (collapsableHeight == 0.0) {
                             setState(() {
-                              collapsableHeight = 240.0;
+                              collapsableHeight = 300.0;
                             });
-                          } else if (collapsableHeight == 240.0) {
+                          } else if (collapsableHeight == 300.0) {
                             setState(() {
                               collapsableHeight = 0.0;
                             });
@@ -147,9 +169,9 @@ class _MyAppState extends State<NavBarWidget> {
                           onPressed: () {
                             if (collapsableHeight == 0.0) {
                               setState(() {
-                                collapsableHeight = 240.0;
+                                collapsableHeight = 300.0;
                               });
-                            } else if (collapsableHeight == 240.0) {
+                            } else if (collapsableHeight == 300.0) {
                               setState(() {
                                 collapsableHeight = 0.0;
                               });
@@ -181,47 +203,8 @@ class _MyAppState extends State<NavBarWidget> {
                                   // ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow.shade800),)
                                   ,
                                   onPressed: (){
-
+                                    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(4);
                                     Navigator.of(context).pushNamed('/contact');
-                                // showDialog(
-                                //   context: context,
-                                //   barrierColor: Colors.black.withOpacity(0.5),  // This line makes the background fade
-                                //   builder: (context) => Dialog(
-                                //     backgroundColor: Colors.transparent,
-                                //     shape: RoundedRectangleBorder(
-                                //       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                //     ),
-                                //     child: Stack(
-                                //       children: [
-                                //         Container(
-                                //           decoration: BoxDecoration(
-                                //               borderRadius: BorderRadius.circular(20),
-                                //               gradient: LinearGradient(
-                                //                   begin: Alignment.topLeft,
-                                //                   end: Alignment.bottomRight,
-                                //                   colors: [
-                                //                     Colors.orange[800]!,
-                                //                     Colors.yellow[800]!,
-                                //                     Colors.yellow[800]!
-                                //                   ]
-                                //               )
-                                //           ),
-                                //           width: (MediaQuery.of(context).size.width < 700) ? MediaQuery.of(context).size.width * 1 : 350,  // This line sets the width
-                                //           child: FormPopup(),
-                                //         ),
-                                //         Positioned(
-                                //             right: 0,
-                                //             top: 0,
-                                //             child: IconButton(
-                                //               icon: Icon(Icons.close, color: Colors.black),  // Close button icon
-                                //               onPressed: () {
-                                //                 Navigator.of(context).pop();  // Close the dialog when the button is pressed
-                                //               },
-                                //             ))
-                                //       ],
-                                //     ),
-                                //   ),
-                                // );
                               },
                                   child: Text("Lets Connect",style: GoogleFonts.poppins(
                                     fontSize: 16.0,
@@ -240,28 +223,37 @@ class _MyAppState extends State<NavBarWidget> {
                             ),
                             NavBarItem(
                               number: 1,
-                              text: 'Gallery',
+                              text: 'Loans',
                               onTap: () {
-                                print("Gallery");
+                                print("Loans");
                                 Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
-                                Navigator.of(context).pushNamed('/gallery');
+                                Navigator.of(context).pushNamed('/about-loan');
                               },
                             ),
                             NavBarItem(
                               number: 2,
-                              text: 'About Us',
+                              text: 'Apply Now',
                               onTap: () {
-                                print("About Us");
+                                print("Apply Now");
                                 Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
-                                Navigator.of(context).pushNamed('/about');
+                                Navigator.of(context).pushNamed('/apply-now');
                               },
                             ),
                             NavBarItem(
                               number: 3,
+                              text: 'FAQs',
+                              onTap: () {
+                                print("FAQs");
+                                Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                                Navigator.of(context).pushNamed('/faq');
+                              },
+                            ),
+                            NavBarItem(
+                              number: 4,
                               text: 'Contact Us',
                               onTap: () {
                                 print("Contact Us");
-                                Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                                Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(4);
                                 Navigator.of(context).pushNamed('/contact');
                               },
                             ),
