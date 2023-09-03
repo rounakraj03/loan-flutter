@@ -393,7 +393,8 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                         CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){
                           Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
                         Navigator.of(context).pushNamed('/apply-now');}),
-                        SizedBox(height: 20,)
+                        SizedBox(height: 10,),
+                        SizedBox(height: 10,)
                       ],
                     )
 
