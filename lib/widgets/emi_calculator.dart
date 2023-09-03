@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'dart:math';
 
 import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
+import 'package:provider/provider.dart';
 
 
 class EmiCalculatorWidget extends StatefulWidget {
@@ -179,7 +181,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${emiValue.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
                                             ],
                                           ),
                                         ),
@@ -193,7 +195,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text(totalInterest.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${totalInterest.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
                                             ],
                                           ),
                                         ),
@@ -208,7 +210,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("You must return :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text((_sliderValueAmount+totalInterest).toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${(_sliderValueAmount+totalInterest).toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
                                             ],
                                           ),
                                         ),
@@ -217,7 +219,10 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                   ),
 
                                   SizedBox(height: 70,),
-                                  Center(child: CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){}, width: 200,)),
+                                  Center(child: CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){
+                                    Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                                    Navigator.of(context).pushNamed('/apply-now');
+                                  }, width: 200,)),
                                   SizedBox(height: 20,)
                                 ],
                               )
@@ -376,16 +381,18 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
 
                         SizedBox(height: 50,),
                         Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
-                        Text(emiValue.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                        Text("₹ ${emiValue.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
                         SizedBox(height: 50,),
                         Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
-                        Text(totalInterest.toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                        Text("₹ ${totalInterest.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
                         SizedBox(height: 50,),
                         Text("Total Payment(Principal + Interest)", style: TextStyle(letterSpacing: 1),),
-                        Text((_sliderValueAmount+totalInterest).toStringAsFixed(2), style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                        Text("₹ ${(_sliderValueAmount+totalInterest).toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
 
                         SizedBox(height: 70,),
-                        CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){}),
+                        CustomWhiteElevatedButton(child: "APPLY FOR THIS LOAN", onPressed: (){
+                          Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                        Navigator.of(context).pushNamed('/apply-now');}),
                         SizedBox(height: 20,)
                       ],
                     )

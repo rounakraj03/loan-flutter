@@ -24,11 +24,11 @@ class _FaqWidgetsOneState extends State<FaqWidgetsOne> {
   // bool isSelected = false;
 
   final questionAnswerList = [
-    ["1. When should I apply?","Discover you question from underneath or present your inquiry fromt the submit box. Growing businesses need strong tax management to meet current and future tax liabilities and we can help you achieve this, whatever challenges you face."],
-    ["2. Do you charge for your service?","Discover you question from underneath or present your inquiry fromt the submit box. Growing businesses need strong tax management to meet current and future tax liabilities and we can help you achieve this, whatever challenges you face."],
-    ["3. How fast will my loan be funded?","Discover you question from underneath or present your inquiry fromt the submit box. Growing businesses need strong tax management to meet current and future tax liabilities and we can help you achieve this, whatever challenges you face."],
-    ["4. What kind of business financing do you offer?","Discover you question from underneath or present your inquiry fromt the submit box. Growing businesses need strong tax management to meet current and future tax liabilities and we can help you achieve this, whatever challenges you face."],
-    ["5. How long is an approved interest rate and loan offer valid?", "Discover you question from underneath or present your inquiry fromt the submit box. Growing businesses need strong tax management to meet current and future tax liabilities and we can help you achieve this, whatever challenges you face."]
+    ["1. Can I prepay my business loan?"," Yes, you can prepay your business loan after a certain period, usually after 6 months from the loan disbursement date. Prepayment charges may apply."],
+    ["2. What is the maximum loan amount I can borrow for a home loan?","The maximum loan amount depends on various factors such as your income, credit score, and the value of the property. Usually, up to 80% of the property value can be financed."],
+    ["3. How quickly can I get a personal loan?","Once you have submitted all necessary documents, you can expect approval within 48 to 72 hours, depending on the lender."],
+    ["4. Can I get a car loan for a used vehicle?","Yes, many lenders offer loans for both new and used vehicles. The terms and conditions might differ."],
+    ["5.  What kind of properties are eligible for a loan against property?", "Both residential and commercial properties are generally eligible. However, the property must be free from legal disputes."]
   ];
 
 

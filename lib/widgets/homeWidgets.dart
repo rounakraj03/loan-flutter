@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
 import 'package:flutter_loan/widgets/customElevatedButton.dart';
 import 'package:flutter_loan/widgets/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeOneWidget extends StatefulWidget {
@@ -381,7 +383,7 @@ class HomeThreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(builder: (context, constraints) {
-      if(constraints.maxWidth > (Constants.desktop_view -300)) {
+      if(constraints.maxWidth > (Constants.desktop_view - 300)) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 60),
           child: Column(
@@ -398,8 +400,8 @@ class HomeThreeWidget extends StatelessWidget {
                 text: TextSpan(
                     style: GoogleFonts.montserrat(color: Color(0xff222222), fontSize: 42),
                     children: [
-                      TextSpan(text: "Small Business Loans For ",style: TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: "a Daily Expenses"),
+                      TextSpan(text: "Empowering Businesses ", style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: "Through Financial Freedom"),
                     ]
                 ),
               ),
@@ -407,25 +409,27 @@ class HomeThreeWidget extends StatelessWidget {
               UnderLineWidget(height: 3, width: 100,),
               SizedBox(height: 30,),
 
-              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Color(0xff666666), wordSpacing: 1, fontWeight: FontWeight.w700,fontSize: 16),),
+              Text("We help small businesses navigate the complex world of finance, offering tailor-made loans for every unique enterprise.", style: TextStyle(color: Color(0xff666666), wordSpacing: 1, fontWeight: FontWeight.w700, fontSize: 16),),
               SizedBox(height: 30,),
-              Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.black38, wordSpacing: 1,fontSize: 16),),
+              Text("In a digitally connected world, social sentiment matters. Our community of satisfied clients speaks volumes about our commitment to your financial growth.", style: TextStyle(color: Colors.black38, wordSpacing: 1, fontSize: 16),),
               SizedBox(height: 30,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CustomCircularElevatedButton(child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,), onPressed: (){}),
+                  CustomCircularElevatedButton(
+                      child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,),
+                      onPressed: () {
+                        Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                        Navigator.of(context).pushNamed('/apply-now');
+                      }),
                   SizedBox(width: 20,),
-                  Text("How We Work", style: TextStyle(wordSpacing: 1, color: Colors.black,fontSize: 16),)
+                  Text("Apply For The Loan", style: TextStyle(wordSpacing: 1, color: Colors.black, fontSize: 16),)
                 ],
               )
-
             ],
-
           ),
         );
-      }
-      else {
+      } else {
         return Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -442,8 +446,8 @@ class HomeThreeWidget extends StatelessWidget {
                 text: TextSpan(
                     style: TextStyle(color: Colors.black, fontSize: 26),
                     children: [
-                      TextSpan(text: "Small Business Loans For ",style: TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: "a Daily Expenses"),
+                      TextSpan(text: "Empowering Businesses ", style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: "Through Financial Freedom"),
                     ]
                 ),
               ),
@@ -451,25 +455,28 @@ class HomeThreeWidget extends StatelessWidget {
               UnderLineWidget(height: 3, width: 100,),
               SizedBox(height: 30,),
 
-              Text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore magna aliqua. Ut enim ad minim veniam quis.", style: TextStyle(color: Colors.black45, wordSpacing: 1, fontWeight: FontWeight.w700),),
+              Text("Your business dreams deserve financial freedom. We offer customized loan solutions to help you reach your goals.", style: TextStyle(color: Colors.black45, wordSpacing: 1, fontWeight: FontWeight.w700),),
               SizedBox(height: 30,),
-              Text("what people are posting on social networks With a community of over. million users and a majority age group being 18 to 29. wouldn’t you want to make sure you’re monitoring what people are posting on social networks?", style: TextStyle(color: Colors.black38, wordSpacing: 1),),
+              Text("Your voice matters. Join our thriving community and let’s build a financially secure future together.", style: TextStyle(color: Colors.black38, wordSpacing: 1),),
               SizedBox(height: 30,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CustomCircularElevatedButton(child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,), onPressed: (){}),
+                  CustomCircularElevatedButton(
+                      child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,),
+                      onPressed: () {
+                        Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                        Navigator.of(context).pushNamed('/apply-now');
+                      }),
                   SizedBox(width: 20,),
-                  Text("How We Work", style: TextStyle(wordSpacing: 1, color: Colors.black),)
+                  Text("Apply For The Loan", style: TextStyle(wordSpacing: 1, color: Colors.black),)
                 ],
               )
-
             ],
-
           ),
         );
       }
-    },);
+    });
   }
 }
 
@@ -522,7 +529,10 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                     UnderLineWidget(height: 3, width: 100,),
                       ],
                     ),
-                    CustomElevatedButton(child: "VIEW ALL", width: 200,onPressed: (){}),
+                    CustomElevatedButton(child: "VIEW ALL", width: 200,onPressed: (){
+                      Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
+                      Navigator.of(context).pushNamed('/about-loan');
+                    }),
                   ],
                 ),
                 SizedBox(height: 30,),
@@ -611,7 +621,10 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                 SizedBox(height: 5,),
                 UnderLineWidget(height: 3, width: 100,),
                 SizedBox(height: 30,),
-                CustomElevatedButton(child: "VIEW ALL", onPressed: (){}),
+                CustomElevatedButton(child: "VIEW ALL", onPressed: (){
+                  Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
+                  Navigator.of(context).pushNamed('/about-loan');
+                }),
                 SizedBox(height: 15,),
 
                 // add carousel slider
@@ -1206,8 +1219,8 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
               autoPlayAnimationDuration: Duration(milliseconds: 1500), // Very short duration
               autoPlayCurve: Curves.linear,
               scrollDirection: Axis.horizontal,
-              viewportFraction: 0.2, // Adjust based on your needs
-              height: 150
+              viewportFraction: width>1200 ? 0.2 : 0.5, // Adjust based on your needs
+              height: width > 1200 ? 150 : 80
             ),
             // items: List.generate(10, (index) => Image.asset(Assets.iconMen))
 
@@ -1230,6 +1243,7 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
                 Image.asset(Assets.b16),
               ]
           ),
+          SizedBox(height: 50,)
         ],
       ),
     );

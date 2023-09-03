@@ -90,6 +90,7 @@ class _CustomWhiteElevatedButtonState extends State<CustomWhiteElevatedButton> {
       onTapDown: (details){
         setState(() {
           isHovering = true;
+          widget.onPressed();
         });
       },
       onTapCancel: () {
@@ -152,6 +153,7 @@ class _CustomCircularElevatedButtonState extends State<CustomCircularElevatedBut
       onTapDown: (details){
         setState(() {
           isHovering = true;
+          widget.onPressed();
         });
       },
       onTapUp: (details){

@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
           '/faq': (context) => FaqPage(),
           '/about-loan': (context) => AboutLoanPage()
         },
-        // initialRoute: '/home',
-        // onUnknownRoute: (settings) {
-        //   return MaterialPageRoute(builder: (context) => HomePage());
-        // },
-        home: AboutLoanPage(),
+        initialRoute: '/home',
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(builder: (context) => HomePage());
+        },
+        home: HomePage(),
         // home: ContactUs(),
       ),
     );
