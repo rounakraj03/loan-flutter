@@ -148,6 +148,7 @@ class _MyAppState extends State<NavBarWidget> {
               Container(
                 // color: Color(0xff5f94a6),
                 color: Color(0xff5e92a0),
+                // color: Color(0xff5e92a0),
                 height: 80.0,
                 padding: (width > 1000) ? EdgeInsets.only(left: 100,right: 100.0) :  EdgeInsets.only(left: 20,right: 20.0),
                 child: Row(

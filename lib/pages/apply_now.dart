@@ -34,7 +34,7 @@ class _ApplyNowState extends State<ApplyNow> {
                         children: [
                           AspectRatio(
                             aspectRatio:  (size.width > Constants.desktop_view) ? 16/9 : 16/25,
-                            child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
+                            child: Image.asset(Assets.img4, fit: BoxFit.cover,)),
 
                             Positioned(
                               top: 0,
@@ -45,7 +45,7 @@ class _ApplyNowState extends State<ApplyNow> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Apply Now", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
-                                  Text("Mentry - Apply Now", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                                  Text("My Paisa Hub - Apply Now", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
                                 ],
                               ),
                             )

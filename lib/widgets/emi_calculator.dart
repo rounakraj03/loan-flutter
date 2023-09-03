@@ -264,7 +264,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
               SizedBox(
                   width: width,
                   height: 300,
-                  child: Image.asset(Assets.sliderGirlImage, fit: BoxFit.cover,)),
+                  child: Image.asset(Assets.sliderGirlImage5, fit: BoxFit.cover,)),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
                 color: Color(0xff323232),

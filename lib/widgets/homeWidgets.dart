@@ -35,7 +35,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                       colors: [Colors.white, Colors.white70, Colors.white60]
                   )
               ),
-              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,),
+              child: Image.asset(Assets.img4, fit: BoxFit.cover,),
             ),
             Positioned(
                 top: 0,
@@ -63,7 +63,10 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                       ),
                       UnderLineWidget(underlineColor: Colors.white,height: 2, width: 100,),
                       SizedBox(height: 10,),
-                      CustomElevatedButton(onPressed: (){}, child: "GET LOAN", width: 200, height: 70)
+                      CustomElevatedButton(onPressed: (){
+                        Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                        Navigator.of(context).pushNamed('/apply-now');
+                      }, child: "GET LOAN", width: 200, height: 70)
                     ],
                   ),
                 )
@@ -191,7 +194,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                   colors: [Colors.white, Colors.white70, Colors.white60]
                 )
               ),
-              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,),
+              child: Image.asset(Assets.img1, fit: BoxFit.cover,),
             ),
             Positioned(
                 top: 0,
@@ -218,7 +221,8 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                       ),
                       UnderLineWidget(underlineColor: Colors.white,height: 2,),
                       SizedBox(height: 10,),
-                      CustomElevatedButton(onPressed: (){}, child: "GET LOAN")
+                      CustomElevatedButton(onPressed: (){Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                      Navigator.of(context).pushNamed('/apply-now');}, child: "GET LOAN")
                     ],
                   ),
                 )
@@ -327,7 +331,7 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
           child: Stack(
             children: [
               Container(
-                height: 500,
+                height: 400,
                 child: Image.asset(Assets.imageFrame2, fit: BoxFit.cover, color: Colors.transparent.withOpacity(0.1),),
               ),
               Positioned(
@@ -346,8 +350,9 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                         child: Image.asset(Assets.secondWidgetImage, fit: BoxFit.cover,)),
                   )),
               Positioned(
-                bottom: 50,
+                bottom: 0,
                   left: 0,
+                  right: 0,
                   child: VisibilityDetector(
                     key: UniqueKey(),
                     onVisibilityChanged: (info) {
@@ -356,14 +361,15 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                       }
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
+                      margin: EdgeInsets.symmetric(horizontal: width/4),
+                      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                       width: width * 0.5,
                       color: Colors.black87,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(alignment: Alignment.center,width: 80,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.w600),)),
-                          Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600))))
+                          Container(alignment: Alignment.center,width: width/4.5,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 72),)),
+                          Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, wordSpacing: 1,height: 1.7))))
                         ],
                       ),
               ),

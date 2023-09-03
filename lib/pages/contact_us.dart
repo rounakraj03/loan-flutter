@@ -46,19 +46,19 @@ class _ContactUsState extends State<ContactUs> {
                         children: [
                           AspectRatio(
                             aspectRatio:  (size.width > Constants.desktop_view) ? 16/9 : 16/25,
-                              child: Image.asset(Assets.homeImage, fit: BoxFit.cover,)),
+                              child: Image.asset(Assets.img3, fit: BoxFit.cover,)),
 
                           Positioned(
-                            // left: 20,
+                            right: 20,
                             top: 0,
                             bottom: 0,
-                            left: size.width/10,
+                            // left: size.width/10,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Contact Us", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
-                                Text("Mentry - Contact Us", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                                Text("Contact Us", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
+                                Text("My Paisa Hub - Contact Us", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
                               ],
                             ),
                           )

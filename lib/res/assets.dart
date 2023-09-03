@@ -23,6 +23,12 @@ class Assets {
   static const String mailIcon = "assets/images/mailIcon.png";
   static const String mapsIcon = "assets/images/mapsIcon.png";
 
+  static const String img1 = "assets/images/img1.jpg";
+  static const String img2 = "assets/images/img2.jpg";
+  static const String img3 = "assets/images/img3.jpg";
+  static const String img4 = "assets/images/img4.jpg";
+  static const String img5 = "assets/images/img5.jpg";
+
 
 
   static const String offer1 = "assets/images/offer1.png";
