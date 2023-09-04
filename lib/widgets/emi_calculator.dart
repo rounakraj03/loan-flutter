@@ -22,14 +22,14 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
   double emiValue = 0.0;
   double totalInterest = 0.0;
 
-  void calculateTotalInterest(double principle, double emiValue, double years) {
+  void calculateTotalInterest(double principle, double emiValue, double years) async {
     double totalPayments = years * 12;
     setState(() {
       totalInterest = (emiValue * totalPayments) - principle;
     });
   }
 
-  void calculateMyEmi(double principle, double interestPerYear, double years) {
+  void calculateMyEmi(double principle, double interestPerYear, double years) async {
     double interestPerMonth = interestPerYear / 12 / 100; // Convert annual interest rate to monthly and percentage to decimal
     double timeInMonths = years * 12;
     setState(() {
@@ -294,6 +294,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                     SizedBox(height: 10,),
                     RichText(
                       text:  TextSpan(
+                        style: TextStyle(color: Colors.white),
                           children:  [
                             TextSpan(
                                 text: "HOW MUCH ", style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1, fontSize: 20)
