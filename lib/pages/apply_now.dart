@@ -44,8 +44,8 @@ class _ApplyNowState extends State<ApplyNow> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Apply Now", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
-                                  Text("My Paisa Hub - Apply Now", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                                  Text("Apply Now", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
+                                  Text("My Paisa Hub - Apply Now", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
                                 ],
                               ),
                             )

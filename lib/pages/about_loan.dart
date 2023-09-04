@@ -42,7 +42,7 @@ class _AboutLoanPageState extends State<AboutLoanPage> with SingleTickerProvider
     });
 
     _controller = AnimationController(
-      duration: Duration(milliseconds:4000),
+      duration: Duration(milliseconds:2000),
       vsync: this,
     );
 
@@ -80,7 +80,7 @@ class _AboutLoanPageState extends State<AboutLoanPage> with SingleTickerProvider
                         children: [
                           AspectRatio(
                               aspectRatio:  (size.width > Constants.desktop_view) ? 16/9 : 16/25,
-                              child: Image.asset(Assets.img2, fit: BoxFit.cover,)),
+                              child: Image.asset(Assets.img8, fit: BoxFit.cover,)),
 
                           Positioned(
                             top: 0,
@@ -90,8 +90,8 @@ class _AboutLoanPageState extends State<AboutLoanPage> with SingleTickerProvider
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Loan", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
-                                Text("My Paisa Hub - Loan", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                                Text("Loan", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
+                                Text("My Paisa Hub - Loan", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
                               ],
                             ),
                           )

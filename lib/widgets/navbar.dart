@@ -41,6 +41,17 @@ class _MyAppState extends State<NavBarWidget> {
                 color: Colors.white,
               ),
               AnimatedContainer(
+                decoration: BoxDecoration(
+                  color: widget.navBarBackgroundColor ?? Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey, // Set the shadow color
+                      offset: Offset(0, 2), // Set the offset of the shadow
+                      blurRadius: 4, // Set the blur radius of the shadow
+                      spreadRadius: 2, // Set the spread radius of the shadow
+                    ),
+                  ],
+                ),
                 margin: EdgeInsets.only(top: 79.0),
                 duration: Duration(milliseconds: 375),
                 curve: Curves.ease,
@@ -48,7 +59,6 @@ class _MyAppState extends State<NavBarWidget> {
                 width: double.infinity,
                 // color: Color(0xff121212),
                 // color: Color(0xff5e92a0),
-                color: widget.navBarBackgroundColor ?? Colors.white,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
