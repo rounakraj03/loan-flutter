@@ -78,6 +78,7 @@ class _FaqContainerState extends State<FaqContainer> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: 10,),
           InkWell(
             onTapDown: (details) => setState(() {
               isSelected = !isSelected;

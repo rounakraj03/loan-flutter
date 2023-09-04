@@ -39,7 +39,7 @@ class _FaqPageState extends State<FaqPage> {
                         children: [
                           AspectRatio(
                               aspectRatio:  (size.width > Constants.desktop_view) ? 16/9 : 16/25,
-                              child: Image.asset(Assets.img1, fit: BoxFit.cover,)),
+                              child: Image.asset(Assets.img7, fit: BoxFit.cover,)),
 
                           Positioned(
                             top: 0,
@@ -49,8 +49,8 @@ class _FaqPageState extends State<FaqPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("FAQs", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
-                                Text("My Paisa Hub - FAQs", style: GoogleFonts.mulish(color: Colors.redAccent, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
+                                Text("FAQs", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  50 : 30, fontWeight: FontWeight.w700),),
+                                Text("My Paisa Hub - FAQs", style: GoogleFonts.mulish(color: Colors.white, fontSize:(size.width > Constants.desktop_view) ?  15 : 12, fontWeight: FontWeight.w600),)
                               ],
                             ),
                           )
@@ -58,14 +58,17 @@ class _FaqPageState extends State<FaqPage> {
                       ),
                       SizedBox(height: 30,),
 
-                      RichText(
-                          text: TextSpan(
-                              style: TextStyle(fontSize: 38, fontWeight: FontWeight.w400, color: Color(0xff222222)),
-                              children: [
-                                TextSpan(text: "Frequently Asked "),
-                                TextSpan(text: "Questions", style: TextStyle(fontWeight: FontWeight.bold)),
-                              ]
-                      )),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                        child: RichText(
+                            text: TextSpan(
+                                style: TextStyle(fontSize: 38, fontWeight: FontWeight.w400, color: Color(0xff222222)),
+                                children: [
+                                  TextSpan(text: "Frequently Asked "),
+                                  TextSpan(text: "Questions", style: TextStyle(fontWeight: FontWeight.bold)),
+                                ]
+                        )),
+                      ),
                       SizedBox(height: 30,),
 
                       FaqWidgetsOne(),

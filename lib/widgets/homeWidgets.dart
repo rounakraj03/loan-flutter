@@ -315,8 +315,8 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(alignment: Alignment.center,width: 100,child: Text("${_animation.value.toInt()}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize:70, letterSpacing: 2),)),
-                            Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: GoogleFonts.mulish(fontWeight: FontWeight.w600, fontSize: 14, wordSpacing: 1))))
+                            Container(alignment: Alignment.center,width: constraints.maxWidth * 0.30 * 0.5,child: Text("${_animation.value.toInt()}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize:70, letterSpacing: 2),)),
+                            Expanded(child: Container(width: constraints.maxWidth * 0.30 * 0.5,child: Text("Years of Experience in finance",style: GoogleFonts.mulish(fontWeight: FontWeight.w600, fontSize: 14, wordSpacing: 1))))
                           ],
                         ),
                       ),
@@ -368,8 +368,8 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(alignment: Alignment.center,width: width/4.5,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 72),)),
-                          Expanded(child: Container(width: 60,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, wordSpacing: 1,height: 1.7))))
+                          Container(alignment: Alignment.center,width: width * 0.5 * 0.4,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 72),)),
+                          Expanded(child: Container(width:  width * 0.5 * 0.6,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, wordSpacing: 1,height: 1.7))))
                         ],
                       ),
               ),
@@ -508,7 +508,7 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
     double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(
       builder: (context, constraints) {
-        if(constraints.maxWidth > Constants.desktop_view) {
+        if(constraints.maxWidth > Constants.desktop_view+ 200) {
           currentCarouselIndex = 0;
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 250.0, vertical: 50),
