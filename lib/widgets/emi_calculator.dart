@@ -262,11 +262,12 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                   height: 300,
                   child: Image.asset(Assets.sliderGirlImage5, fit: BoxFit.cover,)),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 color: Color(0xff323232),
+                // color: Color(0xffffffff),
                 child: RichText(
                   text: TextSpan(
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 24, wordSpacing: 2),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20, wordSpacing: 2, height: 1.7),
                       children: [
                         TextSpan(text:"Unlocking New Possibilities in Your " ),
                         TextSpan(text:" Life and Business ", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.normal)),

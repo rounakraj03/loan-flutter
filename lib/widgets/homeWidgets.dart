@@ -447,14 +447,17 @@ class HomeThreeWidget extends StatelessWidget {
                   Text("ABOUT COMPANY", style: TextStyle(color: Colors.grey),),
                 ],
               ),
-              SizedBox(height: 20,),
-              RichText(
-                text: TextSpan(
-                    style: TextStyle(color: Colors.black, fontSize: 26),
-                    children: [
-                      TextSpan(text: "Empowering Businesses ", style: TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: "Through Financial Freedom"),
-                    ]
+              SizedBox(height: 10,),
+              SizedBox(
+                width: width/1.5,
+                child: RichText(
+                  text: TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: 25, wordSpacing: 1, letterSpacing: 1),
+                      children: [
+                        TextSpan(text: "Empowering Businesses ", style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: "Through Financial Freedom"),
+                      ]
+                  ),
                 ),
               ),
               SizedBox(height: 5,),
@@ -469,7 +472,8 @@ class HomeThreeWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CustomCircularElevatedButton(
-                      child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 50,),
+                    height: 50,width: 50,
+                      child: Icon(Icons.play_arrow_rounded, color: Colors.white, size: 30,),
                       onPressed: () {
                         Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
                         Navigator.of(context).pushNamed('/apply-now');
@@ -501,6 +505,7 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return LayoutBuilder(
       builder: (context, constraints) {
         if(constraints.maxWidth > Constants.desktop_view) {
@@ -614,20 +619,20 @@ class _HomeFourWidgetState extends State<HomeFourWidget> {
                     Text("OUR SERVICES", style: TextStyle(color: Colors.grey),),
                   ],
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 10,),
                 RichText(
                   text: TextSpan(
-                      style: TextStyle(color: Colors.black, fontSize: 26),
+                      style: TextStyle(color: Colors.black, fontSize: 24),
                       children: [
                         TextSpan(text: "What We ",style: TextStyle(fontWeight: FontWeight.bold)),
                         TextSpan(text: "Offer for You"),
                       ]
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 2,),
                 UnderLineWidget(height: 3, width: 100,),
-                SizedBox(height: 30,),
-                CustomElevatedButton(child: "VIEW ALL", onPressed: (){
+                SizedBox(height: 10,),
+                CustomElevatedButton(child: "VIEW ALL", width: width*0.25, height: 40,onPressed: (){
                   Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
                   Navigator.of(context).pushNamed('/about-loan');
                 }),

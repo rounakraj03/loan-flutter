@@ -122,7 +122,9 @@ class _CustomWhiteElevatedButtonState extends State<CustomWhiteElevatedButton> {
 class CustomCircularElevatedButton extends StatefulWidget {
   Widget child;
   VoidCallback onPressed;
-  CustomCircularElevatedButton({super.key, required this.child, required this.onPressed});
+  double? height;
+  double? width;
+  CustomCircularElevatedButton({super.key, this.width, this.height, required this.child, required this.onPressed});
 
   @override
   State<CustomCircularElevatedButton> createState() => _CustomCircularElevatedButtonState();
@@ -163,8 +165,8 @@ class _CustomCircularElevatedButtonState extends State<CustomCircularElevatedBut
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-        width: 80,
-        height: 80,
+        width: widget.width ?? 80,
+        height: widget.height ?? 80,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
             gradient: LinearGradient(
