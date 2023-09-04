@@ -72,10 +72,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                           width: width/2,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                // colors: [Colors.red.shade300, Colors.red.shade600, Colors.red.shade800],
                                 colors: [Color(0xfffe9860),Color(0xfffc8761), Color(0xfffb7262)],
-                                // begin: Alignment.topLeft,
-                                // end: Alignment.bottomRight
                               )
                           ),
                           child: Column(
@@ -96,7 +93,6 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                     ]
                                 ),),
                               SizedBox(height: 30,),
-                              //slider with text showing 1 lakh, 5 lakh, 10 lakh
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -104,15 +100,15 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Text("1 lakh"),
-                                      Container(width: 100, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
-                                      Text("1 crore"),
+                                      Container(width: 150, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
+                                      Text("10 crore"),
                                     ],
                                   ),
                                   Slider(
                                       activeColor: Colors.black,
                                       inactiveColor: Colors.black45,
                                       min: 100000,
-                                      max: 10000000,
+                                      max: 100000000,
                                       value: _sliderValueAmount,
                                       onChanged: (value) {
                                         setState(() {
@@ -181,7 +177,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("Loan Emi :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text("₹ ${emiValue.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${emiValue.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 24),),
                                             ],
                                           ),
                                         ),
@@ -195,7 +191,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("Total Interest Payable :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text("₹ ${totalInterest.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${totalInterest.toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 24),),
                                             ],
                                           ),
                                         ),
@@ -210,7 +206,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                             children: [
                                               Text("You must return :", style: TextStyle(letterSpacing: 1),),
                                               SizedBox(height: 20,),
-                                              Text("₹ ${(_sliderValueAmount+totalInterest).toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 28),),
+                                              Text("₹ ${(_sliderValueAmount+totalInterest).toStringAsFixed(2)}", style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold, fontSize: 24),),
                                             ],
                                           ),
                                         ),
@@ -315,15 +311,15 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text("1 lakh"),
-                            Container(width: 100, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
-                            Text("1 crore"),
+                            Container(width: 150, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
+                            Text("10 crore"),
                           ],
                         ),
                         Slider(
                             activeColor: Colors.black,
                             inactiveColor: Colors.black45,
                             min: 100000,
-                            max: 10000000,
+                            max: 100000000,
                             value: _sliderValueAmount,
                             onChanged: (value) {
                               setState(() {

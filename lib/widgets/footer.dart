@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loan/providers/nav_bar_provider.dart';
 import 'package:flutter_loan/res/app_constants.dart';
 import 'package:flutter_loan/res/assets.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -54,8 +56,11 @@ class _FooterState extends State<Footer> {
                             focusColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
-                            onTapDown: (details){Navigator.of(context).pushNamed('/home');},
-                            child: Image.asset(Assets.logo)),
+                            onTapDown: (details){
+                              Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
+                              Navigator.of(context).pushNamed('/home');
+                              },
+                            child: Image.asset(Assets.logo2)),
                       ),
                       Flexible(
                         flex: 2,
@@ -74,7 +79,9 @@ class _FooterState extends State<Footer> {
                                     focusColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTapDown: (details){Navigator.of(context).pushNamed('/home');},
+                                    onTapDown: (details){
+                                      Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
+                                      Navigator.of(context).pushNamed('/home');},
                                     child: Text("> Home", style: TextStyle(color: Colors.white70))
                                 ),
                                 SizedBox(height: 20,),
@@ -83,7 +90,9 @@ class _FooterState extends State<Footer> {
                                     focusColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTapDown: (details){Navigator.of(context).pushNamed('/faq');},
+                                    onTapDown: (details){
+                                      Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                                    Navigator.of(context).pushNamed('/faq');},
                                     child: Text("> FAQs", style: TextStyle(color: Colors.white70),)
                                 ),
 
@@ -111,7 +120,9 @@ class _FooterState extends State<Footer> {
                                         focusColor: Colors.transparent,
                                         splashColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
-                                        onTapDown: (details){Navigator.of(context).pushNamed('/apply-now');},
+                                        onTapDown: (details){
+                                          Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                                          Navigator.of(context).pushNamed('/apply-now');},
                                         child: Text("> Apply Now", style: TextStyle(color: Colors.white70))
                                     ),
                                     SizedBox(height: 20,),
@@ -120,7 +131,9 @@ class _FooterState extends State<Footer> {
                                         focusColor: Colors.transparent,
                                         splashColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
-                                        onTapDown: (details){Navigator.of(context).pushNamed('/contact');},
+                                        onTapDown: (details){
+                                          Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(4);
+                                          Navigator.of(context).pushNamed('/contact');},
                                         child: Text("> Contact Us", style: TextStyle(color: Colors.white70),)
                                     ),
                                   ],
@@ -145,7 +158,9 @@ class _FooterState extends State<Footer> {
                                     focusColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTapDown: (details){Navigator.of(context).pushNamed('/about-loan');},
+                                    onTapDown: (details){
+                                      Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(1);
+                                      Navigator.of(context).pushNamed('/about-loan');},
                                     child: Text("> About Loan", style: TextStyle(color: Colors.white70))
                                 ),
                                 SizedBox(height: 40,),
@@ -322,7 +337,15 @@ class _FooterState extends State<Footer> {
                    child: Row(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
-                       Flexible(flex:1,child: Image.asset(Assets.logo)),
+                       Flexible(flex:1,child: InkWell(
+                           hoverColor: Colors.transparent,
+                           focusColor: Colors.transparent,
+                           splashColor: Colors.transparent,
+                           highlightColor: Colors.transparent,
+                           onTapDown: (details){
+                             Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
+                             Navigator.of(context).pushNamed('/home');
+                           },child: Image.asset(Assets.logo2))),
                       //  Flexible(flex:1,child: Text("MyPaisaBazaar", style: TextStyle(fontWeight: FontWeight.bold),))
                      ],
                    ),
@@ -337,7 +360,10 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){Navigator.of(context).pushNamed('/home');},
+                     onTapDown: (details){
+                       Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
+                       Navigator.of(context).pushNamed('/home');
+                     },
                      child: Text("> Home", style: TextStyle(color: Colors.white70))
                  ),
                  SizedBox(height: 20,),
@@ -346,7 +372,9 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){Navigator.of(context).pushNamed('/faq');},
+                     onTapDown: (details){
+                     Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(3);
+                     Navigator.of(context).pushNamed('/faq');},
                      child: Text("> FAQs", style: TextStyle(color: Colors.white70),)
                  ),
 
@@ -361,7 +389,9 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){Navigator.of(context).pushNamed('/apply-now');},
+                     onTapDown: (details){
+                       Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(2);
+                       Navigator.of(context).pushNamed('/apply-now');},
                      child: Text("> Apply Now", style: TextStyle(color: Colors.white70))
                  ),
                  SizedBox(height: 20,),
@@ -370,7 +400,9 @@ class _FooterState extends State<Footer> {
                      focusColor: Colors.transparent,
                      splashColor: Colors.transparent,
                      highlightColor: Colors.transparent,
-                     onTapDown: (details){Navigator.of(context).pushNamed('/contact');},
+                     onTapDown: (details){
+                     Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(4);
+                     Navigator.of(context).pushNamed('/contact');},
                      child: Text("> Contact Us", style: TextStyle(color: Colors.white70),)
                  ),
                

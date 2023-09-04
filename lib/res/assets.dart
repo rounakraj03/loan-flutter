@@ -1,6 +1,7 @@
 class Assets {
   // Images
   static const String logo = "assets/images/logo.png";
+  static const String logo2 = "assets/images/logo2.png";
   static const String smilingMan = "assets/images/smilingMan.png";
   static const String smilingWomen = "assets/images/smilingWomen.png";
   static const String manMug = "assets/images/manMug.jpg";
@@ -28,6 +29,7 @@ class Assets {
   static const String img3 = "assets/images/img3.jpg";
   static const String img4 = "assets/images/img4.jpg";
   static const String img5 = "assets/images/img5.jpg";
+  static const String img6 = "assets/images/img6.png";
 
 
 

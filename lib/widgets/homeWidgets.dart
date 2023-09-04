@@ -42,7 +42,7 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                 bottom: 0,
                 left: 100,
                 child: SizedBox(
-                  width: width/1.5,
+                  width: width/0.6,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,14 +194,14 @@ class _HomeOneWidgetState extends State<HomeOneWidget> {
                   colors: [Colors.white, Colors.white70, Colors.white60]
                 )
               ),
-              child: Image.asset(Assets.img1, fit: BoxFit.cover,),
+              child: Image.asset(Assets.img6, fit: BoxFit.cover,),
             ),
             Positioned(
                 top: 0,
                 bottom: 0,
                 left: 20,
                 child: SizedBox(
-                  width: width/1.5,
+                  width: width/2,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,

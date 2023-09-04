@@ -9,12 +9,20 @@ import 'package:flutter_loan/widgets/lets_connect.dart';
 import 'package:provider/provider.dart';
 
 double collapsableHeight = 0.0;
-Color selected = Color(0xffffffff);
-Color notSelected = Color(0xafffffff);
+// Color selected = Color(0xffffffff);
+Color selected = Colors.purple;
+// Color notSelected = Color(0xafffffff);
+Color notSelected = Colors.black;
 Color appColor = Color(0xfff9a825);
 
 
 class NavBarWidget extends StatefulWidget {
+final Color? navBarBackgroundColor;
+final Color? navBarTextColor;
+
+  const NavBarWidget({ this.navBarBackgroundColor, this.navBarTextColor });
+
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -39,7 +47,8 @@ class _MyAppState extends State<NavBarWidget> {
                 height: (width < 800.0) ? collapsableHeight : 0.0,
                 width: double.infinity,
                 // color: Color(0xff121212),
-                color: Color(0xff5e92a0),
+                // color: Color(0xff5e92a0),
+                color: widget.navBarBackgroundColor ?? Colors.white,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -147,7 +156,8 @@ class _MyAppState extends State<NavBarWidget> {
               ),
               Container(
                 // color: Color(0xff5f94a6),
-                color: Color(0xff5e92a0),
+                // color: Color(0xff5e92a0),
+                color: widget.navBarBackgroundColor ?? Colors.white,
                 // color: Color(0xff5e92a0),
                 height: 80.0,
                 padding: (width > 1000) ? EdgeInsets.only(left: 100,right: 100.0) :  EdgeInsets.only(left: 20,right: 20.0),
@@ -155,7 +165,7 @@ class _MyAppState extends State<NavBarWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                        height:(width > 1000) ? width/29 : width/16,
+                        height:(width > 1000) ? width/20 : width/8,
                         child: InkWell(
                             hoverColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -163,9 +173,9 @@ class _MyAppState extends State<NavBarWidget> {
                               Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
                               Navigator.of(context).pushNamed('/home');
                             },
-                            child: Image.asset(Assets.logo))),
+                            child: Image.asset(Assets.logo, fit: BoxFit.fitHeight,))),
                     LayoutBuilder(builder: (context, constraints) {
-                      if (width < 1000.0) {
+                      if (width < 1100.0) {
                         return NavBarButton(
                           onPressed: () {
                             if (collapsableHeight == 0.0) {
@@ -186,18 +196,18 @@ class _MyAppState extends State<NavBarWidget> {
                               // borderRadius: BorderRadius.circular(40),
                               child: ElevatedButton(
                                   style:ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(Colors.yellow.shade800),
+                                    backgroundColor: MaterialStatePropertyAll(Colors.purple),
                                     foregroundColor: MaterialStateProperty.resolveWith<Color>(
                                           (Set<MaterialState> states) {
                                         if (states.contains(MaterialState.hovered))
-                                          return Colors.black; // Text color when button is hovered
+                                          return Colors.white; // Text color when button is hovered
                                         return Colors.white;  // Default text color
                                       },
                                     ),
                                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
                                           (Set<MaterialState> states) {
                                         if (states.contains(MaterialState.hovered))
-                                          return Colors.white; //<-- SEE HERE
+                                          return Color(0xffff5854); //<-- SEE HERE
                                         return null; // Defer to the widget's default.
                                       },
                                     ),)
@@ -308,7 +318,8 @@ class _NavBarButtonState extends State<NavBarButton> {
           child: Icon(
             Icons.menu,
             size: 30.0,
-            color: Color(0xcfffffff),
+            // color: Color(0xcfffffff),
+            color: Colors.purple,
           ),
         ),
       ),
