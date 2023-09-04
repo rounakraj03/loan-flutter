@@ -18,18 +18,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
   late AnimationController _controller;
-  late Animation<Offset> _slideAnimationLeft;
-  late Animation<Offset> _slideAnimationRight;
+  late AnimationController _controller2;
 
   @override
   void initState() {
     super.initState();
 
     _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 2500));
-
-    // _controller.forward();
+    _controller2 = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
   }
 
+
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +91,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                               key: Key("SlideLeftAndRight2"),
                               onVisibilityChanged: (info) {
                                 if(info.visibleFraction > 0.8){
-                                  _controller.forward();
+                                  _controller2.forward();
                                 }
                               },
                               child: SlideTransition(
@@ -93,7 +99,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                     begin: Offset(-1, 0),
                                     end: Offset(0, 0),
                                   ).animate(CurvedAnimation(
-                                    parent: _controller,
+                                    parent: _controller2,
                                     curve: Curves.easeInOut,
                                   )),child: HomeTwoWidget()),
                             ),
@@ -102,7 +108,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                               key: Key("SlideLeftAndRight3"),
                               onVisibilityChanged: (info) {
                                 if(info.visibleFraction > 0.8){
-                                  _controller.forward();
+                                  _controller2.forward();
                                 }
                               },
                               child: SlideTransition(
@@ -110,7 +116,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                                     begin: Offset(1, 0),
                                     end: Offset(0, 0),
                                   ).animate(CurvedAnimation(
-                                    parent: _controller,
+                                    parent: _controller2,
                                     curve: Curves.easeInOut,
                                   )),child: HomeThreeWidget()),
                             ),

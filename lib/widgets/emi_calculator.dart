@@ -100,7 +100,7 @@ class _EmiCalculatorWidgetState extends State<EmiCalculatorWidget> {
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Text("1 lakh"),
-                                      Container(width: 150, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(2))), // Dynamic value
+                                      Container(width: 150, alignment: Alignment.center, child: Text(_sliderValueAmount.toStringAsFixed(0))), // Dynamic value
                                       Text("10 crore"),
                                     ],
                                   ),
