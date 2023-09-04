@@ -19,7 +19,11 @@ class AboutLoanPage extends StatefulWidget {
   State<AboutLoanPage> createState() => _AboutLoanPageState();
 }
 
-class _AboutLoanPageState extends State<AboutLoanPage> {
+class _AboutLoanPageState extends State<AboutLoanPage> with SingleTickerProviderStateMixin{
+
+  late final AnimationController _controller;
+  late final Animation<double> _fadeAnimation;
+
 
   late int selectedIndex;
   final nameController = TextEditingController();
@@ -36,12 +40,22 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
     setState(() {
       selectedIndex  = widget.selectedNumber ?? 0;
     });
+
+    _controller = AnimationController(
+      duration: Duration(milliseconds:4000),
+      vsync: this,
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.forward();
+
     super.initState();
   }
 
   @override
   void dispose() {
     scrollController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -104,7 +118,7 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
                                           color: Colors.white,
                                           child: Column(
                                               children: List.generate(AboutLoanData.aboutLoanData.length, (index) => InkWell(
-                                                onTapDown: (details) => setState(() {selectedIndex = index;}),
+                                                onTapDown: (details) => setState(() {selectedIndex = index; _controller.forward(from: 0.0);}),
                                                 focusColor: Colors.transparent,
                                                 splashColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
@@ -199,10 +213,19 @@ class _AboutLoanPageState extends State<AboutLoanPage> {
                                           width: 1000,
                                           // width: double.maxFinite,
                                           child: Image.asset(AboutLoanData.aboutLoanData[selectedIndex][1], fit: BoxFit.cover,)),
-                                      SizedBox(height: 30,),
-                                      Text(AboutLoanData.aboutLoanData[selectedIndex][0], style: GoogleFonts.poppins(color: Color(0xff222222), fontWeight: FontWeight.bold, fontSize: 32),),
-                                      SizedBox(height: 10,),
-                                      Text(AboutLoanData.aboutLoanData[selectedIndex][2], style: GoogleFonts.poppins(color: Color(0xff666666), fontSize: 15),)
+                                      FadeTransition(
+                                        opacity: _fadeAnimation,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(height: 30,),
+                                            Text(AboutLoanData.aboutLoanData[selectedIndex][0], style: GoogleFonts.poppins(color: Color(0xff222222), fontWeight: FontWeight.bold, fontSize: 32),),
+                                            SizedBox(height: 10,),
+                                            Text(AboutLoanData.aboutLoanData[selectedIndex][2], style: GoogleFonts.poppins(color: Color(0xff666666), fontSize: 15),)
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )

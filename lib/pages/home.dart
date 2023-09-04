@@ -6,6 +6,7 @@ import 'package:flutter_loan/widgets/footer.dart';
 import 'package:flutter_loan/widgets/homeWidgets.dart';
 import 'package:flutter_loan/widgets/navbar.dart';
 import 'package:provider/provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,11 +15,19 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
+
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnimationLeft;
+  late Animation<Offset> _slideAnimationRight;
 
   @override
   void initState() {
     super.initState();
+
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 2500));
+
+    // _controller.forward();
   }
 
 
@@ -42,15 +51,69 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Flexible(flex:1,child: HomeTwoWidget()),
+                              Flexible(flex:1,child: VisibilityDetector(
+                                key: Key("SlideLeftAndRight"),
+                                onVisibilityChanged: (info) {
+                                  if(info.visibleFraction > 0.8){
+                                    _controller.forward();
+                                  }
+                                },
+                                child: SlideTransition(
+                                    position: Tween<Offset>(
+                                      begin: Offset(-1, 0),
+                                      end: Offset(0, 0),
+                                    ).animate(CurvedAnimation(
+                                      parent: _controller,
+                                      curve: Curves.easeInOut,
+                                    )),
+                                    child: HomeTwoWidget()),
+                              )),
                               SizedBox(width: 10,),
-                              Flexible(flex:1,child: HomeThreeWidget()),
+                              Flexible(flex:1,child: SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: Offset(1, 0),
+                                    end: Offset(0, 0),
+                                  ).animate(CurvedAnimation(
+                                    parent: _controller,
+                                    curve: Curves.easeInOut,
+                                  )),
+                                  child: HomeThreeWidget())),
                             ],
                           ) : Column(
                           children: [
-                            HomeTwoWidget(),
+                            VisibilityDetector(
+                              key: Key("SlideLeftAndRight2"),
+                              onVisibilityChanged: (info) {
+                                if(info.visibleFraction > 0.8){
+                                  _controller.forward();
+                                }
+                              },
+                              child: SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: Offset(-1, 0),
+                                    end: Offset(0, 0),
+                                  ).animate(CurvedAnimation(
+                                    parent: _controller,
+                                    curve: Curves.easeInOut,
+                                  )),child: HomeTwoWidget()),
+                            ),
                             SizedBox(height: 30,),
-                            HomeThreeWidget(),
+                            VisibilityDetector(
+                              key: Key("SlideLeftAndRight3"),
+                              onVisibilityChanged: (info) {
+                                if(info.visibleFraction > 0.8){
+                                  _controller.forward();
+                                }
+                              },
+                              child: SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: Offset(1, 0),
+                                    end: Offset(0, 0),
+                                  ).animate(CurvedAnimation(
+                                    parent: _controller,
+                                    curve: Curves.easeInOut,
+                                  )),child: HomeThreeWidget()),
+                            ),
                           ],
                         ),
                         HomeFourWidget(),
