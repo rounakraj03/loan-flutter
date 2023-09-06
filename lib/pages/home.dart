@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                             ],
                           ) : Column(
                           children: [
+                            HomeFourWidget(),
                             VisibilityDetector(
                               key: Key("SlideLeftAndRight2"),
                               onVisibilityChanged: (info) {
@@ -122,7 +123,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                             ),
                           ],
                         ),
-                        HomeFourWidget(),
+                        (size.width > Constants.desktop_view) ? HomeFourWidget()  : SizedBox(height: 10),
                         EmiCalculatorWidget(),
                         HomeFiveWidget(),
                         HomeSixWidget(),

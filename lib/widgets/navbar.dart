@@ -180,6 +180,9 @@ class _MyAppState extends State<NavBarWidget> {
                             hoverColor: Colors.transparent,
                             focusColor: Colors.transparent,
                             onTap: (){
+                              setState(() {
+                                collapsableHeight = 0.0;
+                              });
                               Provider.of<NavBarProvider>(context, listen: false).changeNavBarIndexValue(0);
                               Navigator.of(context).pushNamed('/home');
                             },

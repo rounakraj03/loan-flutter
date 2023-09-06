@@ -368,7 +368,7 @@ class _HomeTwoWidgetState extends State<HomeTwoWidget> with SingleTickerProvider
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(alignment: Alignment.center,width: width * 0.5 * 0.4,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 72),)),
+                          Container(alignment: Alignment.center,width: width * 0.5 * 0.4,child: Text("${_animation.value.toInt()}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 65),)),
                           Expanded(child: Container(width:  width * 0.5 * 0.6,child: Text("Years of Experience in finance",style: TextStyle(fontWeight: FontWeight.w600, wordSpacing: 1,height: 1.7))))
                         ],
                       ),
@@ -705,8 +705,9 @@ class CardContainer extends StatefulWidget {
   String assetName;
   String heading;
   String subHeading;
+  bool? isCenter;
 
-  CardContainer({required this.assetName, required this.heading, required this.subHeading, super.key});
+  CardContainer({required this.assetName, required this.heading, required this.subHeading, this.isCenter, super.key});
 
   @override
   State<CardContainer> createState() => _CardContainerState();
@@ -754,6 +755,13 @@ class _CardContainerState extends State<CardContainer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  widget.isCenter != null ?
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox( height: 70, width: 70, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+                    ],
+                  ) :
                   SizedBox( height: 70, width: 70, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
                   SizedBox(height: 5,),
                   Column(
@@ -805,7 +813,12 @@ class _CardContainerState extends State<CardContainer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox( height: 80, width: 80, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox( height: 80, width: 80, child: Image.asset(widget.assetName, color: Colors.deepOrangeAccent),),
+                    ],
+                  ),
                   SizedBox(height: 20,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1230,8 +1243,8 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
               autoPlayAnimationDuration: Duration(milliseconds: 1500), // Very short duration
               autoPlayCurve: Curves.linear,
               scrollDirection: Axis.horizontal,
-              viewportFraction: width>1200 ? 0.2 : 0.5, // Adjust based on your needs
-              height: width > 1200 ? 150 : 80
+              viewportFraction: width>1200 ? 0.2 : 0.8, // Adjust based on your needs
+              height: width > 1200 ? 150 : 100
             ),
             // items: List.generate(10, (index) => Image.asset(Assets.iconMen))
 
