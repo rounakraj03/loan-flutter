@@ -36,7 +36,7 @@ class _FaqWidgetsOneState extends State<FaqWidgetsOne> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: width > 1200 ? 40 : 10, vertical: width > 1200 ? 20 : 5),
       child: Column(
         children: List.generate(questionAnswerList.length, (index) => FaqContainer(question: questionAnswerList[index][0], answer:  questionAnswerList[index][1]))
       ),
@@ -84,20 +84,20 @@ class _FaqContainerState extends State<FaqContainer> {
               isSelected = !isSelected;
             }),
             child: Container(
-              padding: EdgeInsets.only(left: 50, right: 50),
+              padding: EdgeInsets.only(left: width > 1200 ? 50 : 10, right: width > 1200 ? 50 : 10),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: unselectedBoxColor
                   )
               ),
               width: double.maxFinite,
-              height: 80,
+              height: width > 1200 ? 80 : 100,
               alignment: Alignment.center,
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(child: Text(widget.question,style: unselectedTextStyle,)),
+                    Expanded(child: Text(widget.question,style: unselectedTextStyle.copyWith(fontSize: width > 1200 ? 18 : 14),)),
                     SizedBox(height: 15,width: 15, child: unselectedChild,)
                   ]
               ),
@@ -108,7 +108,7 @@ class _FaqContainerState extends State<FaqContainer> {
               isSelected = !isSelected;
             }),
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+              padding: EdgeInsets.symmetric(vertical: width > 1200 ? 30 : 30, horizontal: width > 1200 ? 50 : 10),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: selectedBoxColor
@@ -120,7 +120,7 @@ class _FaqContainerState extends State<FaqContainer> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(child: Text(widget.answer,style: selectedTextStyle,)),
+                    Expanded(child: Text(widget.answer,style: selectedTextStyle.copyWith(fontSize: width > 1200 ? 18 : 14),)),
                     SizedBox(height: 15,width: 15, child: selectedChild,)
                   ]
               ),

@@ -59,7 +59,7 @@ class _FaqPageState extends State<FaqPage> {
                       SizedBox(height: 30,),
 
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width > 1200 ? 40 : 10),
                         child: RichText(
                             text: TextSpan(
                                 style: TextStyle(fontSize: 38, fontWeight: FontWeight.w400, color: Color(0xff222222)),
