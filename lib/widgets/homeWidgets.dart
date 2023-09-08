@@ -1335,7 +1335,6 @@ class _TeamsState extends State<Teams> with TickerProviderStateMixin{
       textSubTitle = 10;
     }
 
-    print(size);
 
     return Column(
       children: [

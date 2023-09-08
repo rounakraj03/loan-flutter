@@ -79,6 +79,7 @@ class Assets {
   static const String homeLoan = "assets/loanImages/homeLoan.jpg";
   static const String loanAgainstProperty = "assets/loanImages/loanAgainstProperty.jpg";
   static const String personalLoan = "assets/loanImages/personalLoan.jpg";
+  static const String overdraft = "assets/loanImages/overdraft.jpg";
 
 
   static const String b1 = "assets/bankImages/b1.png";
