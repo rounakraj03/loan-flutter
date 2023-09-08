@@ -1225,9 +1225,13 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width/15, vertical: 10),
+      padding: EdgeInsets.symmetric(
+          // horizontal: width/15,
+          // vertical: 10
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           RichText(textAlign: TextAlign.center,
               text: TextSpan(
@@ -1246,7 +1250,7 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
               autoPlayCurve: Curves.linear,
               scrollDirection: Axis.horizontal,
               viewportFraction: width>1200 ? 0.2 : 0.8, // Adjust based on your needs
-              height: width > 1200 ? 150 : 100
+              height: width > 1200 ? 180 : 100
             ),
             // items: List.generate(10, (index) => Image.asset(Assets.iconMen))
 
@@ -1272,6 +1276,115 @@ class _HomeSixWidgetState extends State<HomeSixWidget> {
           SizedBox(height: 50,)
         ],
       ),
+    );
+  }
+}
+
+
+class Teams extends StatefulWidget {
+
+  @override
+  State<Teams> createState() => _TeamsState();
+}
+
+class _TeamsState extends State<Teams> with TickerProviderStateMixin{
+  final carouselKey = GlobalKey<CarouselSliderState>();
+
+
+  List teamList = [
+    Assets.team1,
+    Assets.team2,
+    Assets.team3,
+    Assets.team4,
+    Assets.team5,
+  ];
+
+  List teamListDetail = [
+    "Rounak",
+    "Raj",
+    "Tanishk",
+    "Gusain",
+    "Rahul",
+  ];
+
+  List teamListDesignation = [
+    "Loan Officer",
+    "Underwriter",
+    "Loan Processor",
+    "Credit Analyst",
+    "Mortgage Broker",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double imageHeight = size.width/6;
+    int numberOfImage = 4;
+    double textTitle =28;
+    double textSubTitle =18;
+
+    if(size.width > 1000){
+      imageHeight = size.width/4;
+      numberOfImage = 4;
+      textTitle = 28;
+      textSubTitle = 18;
+    }else if(size.width < 1000) {
+      imageHeight = 300;
+      numberOfImage = 2;
+      textTitle = 18;
+      textSubTitle = 10;
+    }
+
+    print(size);
+
+    return Column(
+      children: [
+        RichText(textAlign: TextAlign.center,
+            text: TextSpan(
+                style: TextStyle(color: Colors.black,fontSize: 40, letterSpacing: 1, wordSpacing: 1),
+                children: [
+                  TextSpan(text: "Our "),
+                  TextSpan(text: "Team", style: TextStyle(fontWeight: FontWeight.bold)),
+                ]
+            )),
+        Container(
+          margin: EdgeInsets.only(bottom:20),
+          width: size.width,
+          height: imageHeight,
+          child: CarouselSlider(
+            key: carouselKey,
+            items: List.generate(
+              teamList.length,
+                  (index) => Column(
+                children: [
+                  Container(
+                      height: size.width > 1200 ? 180 : 120,
+                      width: size.width > 1200 ? 180 : 120,
+                      // height: 150,
+                      // width: 150,
+                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      child: ClipOval(child: Image.asset(teamList[index], fit: BoxFit.cover))),
+                  Center(child: Column(
+                      children: [
+                        Text(teamListDetail[index], style: TextStyle(color: Colors.white, fontSize: textTitle),),
+                        SizedBox(height: 5,),
+                        Text("(${teamListDesignation[index]})", style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          wordSpacing: 1,
+                          fontSize: 15,
+                        ),),
+                      ]))],),),
+            options: CarouselOptions(
+              autoPlay: true,
+              height: size.width > 1200 ? 240 : 170,
+              // height: 210,
+              viewportFraction: 1/numberOfImage, // Setting to full width
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

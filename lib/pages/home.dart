@@ -126,6 +126,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                         (size.width > Constants.desktop_view) ? HomeFourWidget()  : SizedBox(height: 10),
                         EmiCalculatorWidget(),
                         HomeFiveWidget(),
+                        Teams(),
                         HomeSixWidget(),
                         Footer()
 
