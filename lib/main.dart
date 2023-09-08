@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => NavBarProvider(),)
         ],
       child: MaterialApp(
-        title: 'LOAN APP',
+        title: 'My Paisa Hub',
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: MessageHandler.scaffoldMessengerKey,
         theme: AppTheme.theme,
