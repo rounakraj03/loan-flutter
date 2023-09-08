@@ -36,6 +36,8 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
   final workPhoneController  = TextEditingController();
   final lengthOfEmploymentController  = TextEditingController();
   final monthlyIncomeController  = TextEditingController();
+  final dateOfMarriageController  = TextEditingController();
+  final purchasingPropertyAddressController  = TextEditingController();
 
   String genderValue = "Male";
 
@@ -97,41 +99,59 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                   ),
 
                   SizedBox(height: 30,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Text("Gender", style: textstyle1),
-                      SizedBox(height: 5,),
-                      RadioListTile(
-                        activeColor: Colors.redAccent,
-                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
-                        contentPadding: EdgeInsets.only(left: 0),
-                        value: "Male",
-                        groupValue: genderValue,
-                        title: Text('Male', style: textstyle1,),
-                        onChanged: (value) {
-                          setState(() {
-                            if(value != null) {
-                              genderValue = value;
-                            }
-                          });
-                        },
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Gender", style: textstyle1),
+                            SizedBox(height: 5,),
+                            RadioListTile(
+                              activeColor: Colors.redAccent,
+                              fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                              contentPadding: EdgeInsets.only(left: 0),
+                              value: "Male",
+                              groupValue: genderValue,
+                              title: Text('Male', style: textstyle1,),
+                              onChanged: (value) {
+                                setState(() {
+                                  if(value != null) {
+                                    genderValue = value;
+                                  }
+                                });
+                              },
+                            ),
+                            RadioListTile(
+                              contentPadding: EdgeInsets.only(left: 0),
+                              activeColor: Colors.redAccent,
+                              fillColor: MaterialStatePropertyAll(Colors.redAccent),
+                              value: "Female",
+                              groupValue: genderValue,
+                              title: Text('Female', style: textstyle1,),
+                              onChanged: (value) {
+                                setState(() {
+                                  if(value != null) {
+                                    genderValue = value;
+                                  }
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      RadioListTile(
-                        contentPadding: EdgeInsets.only(left: 0),
-                        activeColor: Colors.redAccent,
-                        fillColor: MaterialStatePropertyAll(Colors.redAccent),
-                        value: "Female",
-                        groupValue: genderValue,
-                        title: Text('Female', style: textstyle1,),
-                        onChanged: (value) {
-                          setState(() {
-                            if(value != null) {
-                              genderValue = value;
-                            }
-                          });
-                        },
-                      ),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Purchasing Property address(if relatable)", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:purchasingPropertyAddressController),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                   SizedBox(height: 30,),
@@ -223,6 +243,18 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           ),
                         ],
                       )),
+                      SizedBox(width: 30,),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Date of Marriage (if married)", style: textstyle1),
+                            SizedBox(height: 5,),
+                            CustomTextField(controller:dateOfMarriageController),
+                          ],
+                        ),
+                      ),
                       SizedBox(width: 30,),
                       Flexible(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -433,6 +465,7 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("phoneController => ${phoneController.text}");
                           print(" dobController => ${dobController.text}");
                           print("maritalStatusController => ${maritalStatusController.text}");
+                          print("dateOfMarriageController => ${dateOfMarriageController.text}");
                           print("numberOfDependantsController => ${numberOfDependantsController.text}");
                           print("countryController  => ${countryController.text}");
                           print("cityController => ${cityController.text}");
@@ -447,6 +480,7 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("lengthOfEmploymentController => ${lengthOfEmploymentController.text}");
                           print("monthlyIncomeController => ${monthlyIncomeController.text}");
                           print("gender => ${genderValue}");
+                          print("purchasingPropertyAddressController => ${purchasingPropertyAddressController.text}");
                         }
                       }, width: 180, height: 60,),
                     ],
@@ -577,6 +611,15 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                   ),
 
 
+
+
+                  SizedBox(height: 30,),
+
+                  Text("Date of Marriage(if married)", style: textstyle1),
+                  SizedBox(height: 5,),
+                  CustomTextField(controller:dateOfMarriageController),
+
+
                   SizedBox(height: 30,),
 
                   Text("Number of Dependants", style: textstyle1),
@@ -682,6 +725,12 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                   SizedBox(height: 5,),
                   CustomTextField(controller:monthlyIncomeController, validatorType: ValidatorType.validateNotNull),
 
+                  SizedBox(height: 30,),
+
+                  Text("Purchasing Property address(if relatable)", style: textstyle1),
+                  SizedBox(height: 5,),
+                  CustomTextField(controller:purchasingPropertyAddressController),
+
 
                   SizedBox(height: 30),
                   Row(
@@ -699,6 +748,7 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("phoneController => ${phoneController.text}");
                           print(" dobController => ${dobController.text}");
                           print("maritalStatusController => ${maritalStatusController.text}");
+                          print("dateOfMarriageController => ${dateOfMarriageController.text}");
                           print("numberOfDependantsController => ${numberOfDependantsController.text}");
                           print("countryController  => ${countryController.text}");
                           print("cityController => ${cityController.text}");
@@ -713,6 +763,7 @@ class _ApplyNowFormState extends State<ApplyNowForm> {
                           print("lengthOfEmploymentController => ${lengthOfEmploymentController.text}");
                           print("monthlyIncomeController => ${monthlyIncomeController.text}");
                           print("gender => ${genderValue}");
+                          print("purchasingPropertyAddressController => ${purchasingPropertyAddressController.text}");
                         }
                       }, width: 180, height: 60,),
                     ],
